@@ -1,12 +1,19 @@
-import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Provider/AuthProvider";
-import toast from "react-hot-toast";
-import { FaGoogle } from "react-icons/fa6";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+// import { useContext, useState } from "react";
+// import { Link, useNavigate } from "react-router-dom";
+// import { AuthContext } from "../Provider/AuthProvider";
+// import toast from "react-hot-toast";
+// import { FaGoogle } from "react-icons/fa6";
+// import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { FaEyeSlash } from "react-icons/fa";
 // import TypeWriter from "../Components/TypeWriter";
+
+import { useContext, useState } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
+import { Link, useNavigate } from "react-router-dom";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { FaGoogle } from "react-icons/fa6";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
   const { createNewUser, setUser, auth } = useContext(AuthContext);
@@ -25,6 +32,7 @@ const SignUp = () => {
       })
       .catch((error) => {
         const errorMsg = error.message;
+        console.log(errorMsg);
         toast.error(errorMsg);
       });
   };
@@ -62,7 +70,7 @@ const SignUp = () => {
     } else if (!/[A-Z]/.test(password)) {
       setError({
         ...error,
-        password: "name must be contain an uppercase character",
+        password: "Pass must be contain an uppercase character",
       });
       return;
     } else if (!/[a-z]/.test(password)) {
@@ -93,6 +101,7 @@ const SignUp = () => {
           .then((res) => res.json())
           .then((data) => {
             toast.success("Welcome!!");
+            e.target.reset;
             setUser(user);
             navigate("/");
           });
@@ -106,9 +115,9 @@ const SignUp = () => {
   return (
     <div className="hero bg-base-200 min-h-screen mt-24 py-16">
       <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl">
-        <span className="text-2xl font-bold text-center mt-4 text-green-400">
+        {/* <span className="text-2xl font-bold text-center mt-4 text-green-400">
           <TypeWriter content={" "} written={["SignUp Now"]}></TypeWriter>
-        </span>
+        </span> */}
         <form onSubmit={handleSubmit} className="card-body">
           <div className="form-control">
             <label className="label">
@@ -184,13 +193,13 @@ const SignUp = () => {
             )}
           </div>
           <div className="form-control mt-6">
-            <button className="btn text-lg text-white bg-green-400 hover:bg-green-300">
+            <button className="btn text-lg text-white bg-orange-400 hover:bg-orange-300">
               Create Account
             </button>
           </div>
           <p>
             Already have an account?
-            <Link to="/login" className="text-red-400 mx-2">
+            <Link to="/login" className="text-orange-400 mx-2">
               Login
             </Link>
           </p>
@@ -199,7 +208,7 @@ const SignUp = () => {
           <p className="text-2xl text-green-400">or</p>
         </div>
         <div className="flex flex-col items-center pb-4 space-y-4">
-          <h2 className="text-2xl font-bold text-center mt-4 text-green-400">
+          <h2 className="text-2xl font-bold text-center mt-4 text-orange-400">
             Login with Google
           </h2>
           <button

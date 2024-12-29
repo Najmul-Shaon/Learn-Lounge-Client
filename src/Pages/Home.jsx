@@ -6,6 +6,7 @@
 // import Team from "../Components/Team";
 // import RunningCampaigns from "../Components/RunningCampaigns";
 import { useEffect, useState } from "react";
+import FAQ from "../Components/FAQ";
 
 const Home = () => {
   // State to manage light/dark mode
@@ -54,6 +55,9 @@ const Home = () => {
           />
         </label>
       </div>
+      {/* <div className="container mx-auto"> */}
+      <FAQ></FAQ>
+      {/* </div> */}
       {/* <Banner></Banner>
        */}
       {/* <RunningCampaigns isDarkMode={isDarkMode}></RunningCampaigns> */}

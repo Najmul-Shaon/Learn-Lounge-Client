@@ -84,7 +84,7 @@ const NavBar = () => {
       <div className="navbar-end flex gap-2">
         {/* <Link to="/login"> */}
         {user && user.email ? (
-          <div class="relative group">
+          <div className="relative group">
             {/* Initial Content  */}
 
             <div className="avatar placeholder">
@@ -94,7 +94,7 @@ const NavBar = () => {
             </div>
 
             {/* Overflow Content (appears on hover)  */}
-            <div class="absolute bottom-[-50px] left-[-50px] mb-2 ml-2 w-auto bg-black text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-all">
+            <div className="absolute bottom-[-50px] left-[-50px] mb-2 ml-2 w-auto bg-black text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-all">
               <button onClick={logOut} className="btn">
                 Log Out
               </button>

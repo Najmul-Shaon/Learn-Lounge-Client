@@ -1,12 +1,18 @@
-import { useContext, useRef, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Provider/AuthProvider";
-import toast from "react-hot-toast";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { FaGoogle } from "react-icons/fa6";
-import { FaEyeSlash } from "react-icons/fa";
-import { MdOutlineRemoveRedEye } from "react-icons/md";
+// import { useContext, useRef, useState } from "react";
+// import { Link, useLocation, useNavigate } from "react-router-dom";
+// import { AuthContext } from "../Provider/AuthProvider";
+// import toast from "react-hot-toast";
+// import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+// import { FaGoogle } from "react-icons/fa6";
 // import TypeWriter from "../Components/TypeWriter";
+import { MdOutlineRemoveRedEye } from "react-icons/md";
+import { FaEyeSlash } from "react-icons/fa";
+import { useContext, useRef, useState } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { FaGoogle } from "react-icons/fa6";
 
 const Login = () => {
   const emailRef = useRef();
@@ -28,6 +34,7 @@ const Login = () => {
       })
       .catch((error) => {
         const errorMsg = error.message;
+        console.log(errorMsg);
         toast.error(errorMsg);
       });
   };
@@ -61,9 +68,9 @@ const Login = () => {
     <div>
       <div className="hero bg-base-200 min-h-screen mt-24 p-8">
         <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl">
-          <span className="text-2xl font-bold text-center mt-4 text-green-400">
+          {/* <span className="text-2xl font-bold text-center mt-4 text-green-400">
             <TypeWriter content={" "} written={["Login Now"]}></TypeWriter>
-          </span>
+          </span> */}
           <form onSubmit={handleSubmit} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -115,13 +122,13 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn text-lg text-white bg-green-400 hover:bg-green-300">
+              <button className="btn text-lg text-white bg-orange-400 hover:bg-green-300">
                 Login
               </button>
             </div>
             <p>
               New here?
-              <Link to="/signup" className="text-red-400 mx-2">
+              <Link to="/signup" className="text-green-400 mx-2">
                 Sign Up
               </Link>
             </p>
@@ -130,7 +137,7 @@ const Login = () => {
             <p className="text-2xl text-green-400">or</p>
           </div>
           <div className="flex flex-col items-center pb-4 space-y-4">
-            <h2 className="text-2xl font-bold text-center mt-4 text-green-400">
+            <h2 className="text-2xl font-bold text-center mt-4 text-orange-400">
               Login with Google
             </h2>
             <button
