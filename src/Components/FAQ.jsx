@@ -2,8 +2,10 @@ import React from "react";
 
 const FAQ = () => {
   return (
-    <div>
-      <h3 className="text-center text-3xl font-bold text-orange-400 mb-6">Frequently Asked Questions</h3>
+    <div className="my-24">
+      <h3 className="text-center text-3xl font-bold text-orange-400 mb-6">
+        Frequently Asked Questions
+      </h3>
       <div className="join join-vertical w-full">
         <div className="collapse collapse-arrow join-item border-base-300 border">
           <input type="radio" name="my-accordion-4" defaultChecked />
