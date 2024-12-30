@@ -36,6 +36,11 @@ const NavBar = () => {
         </NavLink>
       </li>
       <li>
+        <NavLink to={"/createAssignment"} className="font-semibold text-lg">
+          Create Assignment
+        </NavLink>
+      </li>
+      <li>
         <NavLink to="/pendingAssignments" className="font-semibold text-lg">
           Pending Assignments
         </NavLink>

@@ -1,4 +1,5 @@
 import { easeOut, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import team1 from "../assets/team1.jpg";
 // import team2 from '../../assets/team/team2.jpg';
 
@@ -34,9 +35,11 @@ const Banner = () => {
             Join the largest global student community online and say goodbye to
             lack of motivation.
           </p>
-          <button className="btn bg-orange-400 hover:bg-orange-300 text-white text-lg font-semibold">
-            Stay Together Now
-          </button>
+          <Link to={"/"}>
+            <button className="btn bg-orange-400 hover:bg-orange-300 text-white text-lg font-semibold">
+              Stay Together Now
+            </button>
+          </Link>
         </div>
       </div>
     </div>
