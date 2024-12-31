@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Swal from "sweetalert2";
 
 const CreateAssignment = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -14,7 +15,14 @@ const CreateAssignment = () => {
     const marks = form.get("marks");
     const description = form.get("description");
     console.log(title, phoroUrl, marks, description, selected, startDate);
-    // e.target.reset();
+    Swal.fire({
+      position: "top-start",
+      icon: "success",
+      title: "Assignment created successfully!!",
+      showConfirmButton: false,
+      timer: 1000,
+      // e.target.reset();
+    });
   };
 
   return (
