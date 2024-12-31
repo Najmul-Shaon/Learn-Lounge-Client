@@ -27,11 +27,8 @@ const FAQ = () => {
           </div>
           <div className="collapse-content">
             <p>
-              As long as you stay on camera, you can use Focusmate for most
-              kinds of work: desk work, cleaning, cooking, art, music, writing,
-              reading, even at-home exercise! The main thing is to set up your
-              camera so that your partner can see you while you focus on your
-              tasks.
+              This is a Group Study Platform. Here, you can join a group to
+              discuss anything that relates to your learning goal.
             </p>
           </div>
         </div>

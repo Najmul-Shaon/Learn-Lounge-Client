@@ -25,7 +25,7 @@ const Banner = () => {
           <h1 className="text-5xl font-bold">
             Focused, Productive,{" "}
             <motion.span
-              animate={{ color: ["#ecff33", "#33ffe3", "#ff6133"] }}
+              animate={{ color: ["#FFC733", "#D98A00", "#FEA400 "] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
               Together
