@@ -78,7 +78,7 @@ const CreateAssignment = () => {
                 <select
                   value={selected}
                   onChange={(e) => setSelected(e.target.value)}
-                  className="border-2 p-3 rounded-lg"
+                  className="input input-bordered"
                   name=""
                   id=""
                 >
@@ -94,7 +94,7 @@ const CreateAssignment = () => {
               </label>
               <div className="w-full">
                 <DatePicker
-                  className="border-2 p-3 rounded-lg"
+                  className="input input-bordered"
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
                 ></DatePicker>

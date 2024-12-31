@@ -1,5 +1,3 @@
-import React from "react";
-
 const FAQ = () => {
   return (
     <div className="my-24 flex flex-col items-center">

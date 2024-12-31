@@ -11,18 +11,9 @@ const NavBar = () => {
   );
 
   const handleToggleTheme = (e) => {
-    console.log(e.target.checked);
-    if (e.target.checked) {
-      setIsDarkMode("dark");
-      console.log("true from check");
-    } else {
-      console.log("false from check");
-      setIsDarkMode("light");
-    }
+    setIsDarkMode(e.target.checked ? "dark" : "light");
   };
-  console.log("mode is ", isDarkMode);
   useEffect(() => {
-    console.log("from use effect", isDarkMode);
     localStorage.setItem("theme", isDarkMode);
     // const localStorageTheme = localStorage.getItem("theme");
     document.querySelector("html").setAttribute("data-theme", isDarkMode);
@@ -127,6 +118,7 @@ const NavBar = () => {
             {/* this hidden checkbox controls the state */}
             <input
               onChange={handleToggleTheme}
+              checked={isDarkMode === "light" ? false : true}
               type="checkbox"
               className="theme-controller"
               value="synthwave"

@@ -9,6 +9,7 @@ import SignUp from "../Pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Home from "../Pages/Home";
 import CreateAssignment from "../Pages/CreateAssignment";
+import Assignments from "../Pages/Assignments";
 // import AllCampaigns from "../Pages/AllCampaigns";
 // import AddNewCampaigns from "../Pages/AddNewCampaigns";
 // import MyCampaigns from "../Pages/MyCampaigns";
@@ -48,11 +49,7 @@ const Router = createBrowserRouter([
       //   },
       {
         path: "/assignments",
-        element: (
-          <PrivateRoute>
-            <h3>assignments</h3>
-          </PrivateRoute>
-        ),
+        element: <Assignments></Assignments>,
         // element: <AddNewCampaigns></AddNewCampaigns>,
       },
       {
