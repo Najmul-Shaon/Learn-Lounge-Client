@@ -8,11 +8,11 @@ import toast from "react-hot-toast";
 
 const UpdateAssignment = () => {
   const assignment = useLoaderData();
-  console.log(assignment);
+  //   console.log(assignment);
 
   const navigation = useNavigate();
   const { user } = useContext(AuthContext);
-  const [type, setType] = useState("");
+  const [type, setType] = useState(assignment.type || "Easy");
   const [deadline, setDeadline] = useState(null);
 
   const [formatedDeadline, setFormatedDeadline] = useState("");
@@ -109,7 +109,7 @@ const UpdateAssignment = () => {
             </div>
 
             <div className="flex gap-4">
-              <div className="form-control">
+              <div className="form-control w-1/2">
                 <label className="label">
                   <span className="label-text">Total Marks</span>
                 </label>
@@ -122,13 +122,12 @@ const UpdateAssignment = () => {
                   required
                 />
               </div>
-              <div className="form-control">
+              <div className="form-control w-1/2">
                 <label className="label">
                   <span className="label-text">Difficulty Level</span>
                 </label>
                 <select
                   value={type}
-                  defaultValue={assignment.type}
                   onChange={(e) => setType(e.target.value)}
                   className="input input-bordered"
                 >
@@ -138,7 +137,7 @@ const UpdateAssignment = () => {
                 </select>
               </div>
             </div>
-            <div>
+            <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Due to</span>
               </label>
@@ -148,7 +147,6 @@ const UpdateAssignment = () => {
                   selected={deadline}
                   defaultValue={assignment.formatedDeadline}
                   onChange={(date) => formatDate(date)}
-                  // dateFormat="dd - mm - yyyy"
                   placeholderText="Select deadline"
                 ></DatePicker>
               </div>
