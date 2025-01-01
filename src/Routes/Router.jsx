@@ -60,6 +60,22 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/myAssignment",
+        element: (
+          <PrivateRoute>
+            <h1>My Assignments</h1>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/pendingAssignments",
+        element: (
+          <PrivateRoute>
+            <h1>Pending</h1>
+          </PrivateRoute>
+        ),
+      },
       //   {
       //     path: "/mycampaigns",
       //     element: (

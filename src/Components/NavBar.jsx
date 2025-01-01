@@ -21,27 +21,32 @@ const NavBar = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/" className="font-semibold text-lg">
+        <NavLink to="/" className="font-semibold text-base">
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink to="/assignments" className="font-semibold text-lg">
+        <NavLink to="/assignments" className="font-semibold text-base">
           Assignments
         </NavLink>
       </li>
       <li>
-        <NavLink to={"/createAssignment"} className="font-semibold text-lg">
+        <NavLink to={"/createAssignment"} className="font-semibold text-base">
           Create Assignment
         </NavLink>
       </li>
       <li>
-        <NavLink to="/pendingAssignments" className="font-semibold text-lg">
+        <NavLink to="/pendingAssignments" className="font-semibold text-base">
           Pending Assignments
         </NavLink>
       </li>
       <li>
-        <NavLink to="/profile" className="font-semibold text-lg">
+        <NavLink to="/myAssignment" className="font-semibold text-base">
+          My Assignment
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/profile" className="font-semibold text-base">
           Profile
         </NavLink>
       </li>
@@ -74,7 +79,7 @@ const NavBar = () => {
             {links}
           </ul>
         </div>
-        <Link to="/" className="text-4xl text-orange-400 font-pacifico">
+        <Link to="/" className="text-3xl text-orange-400 font-pacifico">
           Learn Lounge
         </Link>
       </div>

@@ -17,6 +17,8 @@ import toast from "react-hot-toast";
 
 const SignUp = () => {
   const { createNewUser, setUser, auth } = useContext(AuthContext);
+  // handle error by state
+  const [error, setError] = useState({});
 
   const [showPass, setShowPass] = useState(false);
 
@@ -36,9 +38,6 @@ const SignUp = () => {
         toast.error(errorMsg);
       });
   };
-
-  // handle error by state
-  const [error, setError] = useState({});
 
   // form submit
   const handleSubmit = (e) => {
@@ -81,17 +80,20 @@ const SignUp = () => {
       return;
     }
 
-    const newUser = {
-      name,
-      email,
-      photo,
-    };
-
     createNewUser(email, password)
       .then((result) => {
         const user = result.user;
-
-        fetch("https://crowncube-server.vercel.app/users", {
+        console.log(user);
+        const creationTime = result?.user?.metadata?.creationTime;
+        const lastSignInTime = result?.user?.metadata?.lastSignInTime;
+        const newUser = {
+          name,
+          email,
+          photo,
+          creationTime,
+          lastSignInTime,
+        };
+        fetch("http://localhost:5000/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -101,8 +103,9 @@ const SignUp = () => {
           .then((res) => res.json())
           .then((data) => {
             toast.success("Welcome!!");
-            e.target.reset;
+            console.log("signed up", data);
             setUser(user);
+            e.target.reset();
             navigate("/");
           });
       })
