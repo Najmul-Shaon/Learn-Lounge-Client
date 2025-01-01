@@ -1,8 +1,8 @@
 import { div } from "framer-motion/client";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { GrUpdate } from "react-icons/gr";
 import { MdDelete } from "react-icons/md";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
 
@@ -11,11 +11,17 @@ const Assignments = () => {
   const { user } = useContext(AuthContext);
 
   // load all assignments data from backend api
-  const allAssignments = useLoaderData();
+  const loadedAllAssignments = useLoaderData();
+  const [allAssignments, setAllAssignments] = useState(loadedAllAssignments);
 
-  const handleUpdate = (id) => {
-    console.log("update click", id);
-  };
+  //   const handleUpdate = (id) => {
+  //     console.log("update click", id);
+  //     fetch(`http://localhost:5000/assignment/${id}`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log(data);
+  //       });
+  //   };
 
   // while click on delete button
   const handleDelete = (id) => {
@@ -44,6 +50,10 @@ const Assignments = () => {
                       text: "Your assignment has been deleted.",
                       icon: "success",
                     });
+                    const remaining = allAssignments.filter(
+                      (singleAssignment) => singleAssignment._id !== id
+                    );
+                    setAllAssignments(remaining);
                   }
                 });
             }
@@ -102,12 +112,11 @@ const Assignments = () => {
             </div>
             {/* button action: update delete view  */}
             <div className="card-actions justify-end">
-              <button
-                onClick={() => handleUpdate(assignment._id)}
-                className="btn bg-orange-400 hover:bg-orange-300 text-lg font-bold text-white"
-              >
-                <GrUpdate></GrUpdate>
-              </button>
+              <Link to={`/assignment/update/${assignment._id}`}>
+                <button className="btn bg-orange-400 hover:bg-orange-300 text-lg font-bold text-white">
+                  <GrUpdate></GrUpdate>
+                </button>
+              </Link>
               <button
                 onClick={() => handleDelete(assignment._id)}
                 className="btn bg-orange-400 hover:bg-orange-300 text-2xl font-bold text-white"
