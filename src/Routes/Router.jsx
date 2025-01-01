@@ -50,7 +50,7 @@ const Router = createBrowserRouter([
       {
         path: "/assignments",
         element: <Assignments></Assignments>,
-        // element: <AddNewCampaigns></AddNewCampaigns>,
+        loader: () => fetch("http://localhost:5000/assignments"),
       },
       {
         path: "/createAssignment",

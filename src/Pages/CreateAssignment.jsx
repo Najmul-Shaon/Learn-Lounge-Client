@@ -4,13 +4,30 @@ import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const CreateAssignment = () => {
   const navigation = useNavigate();
   const { user } = useContext(AuthContext);
-  // console.log(user);
-  const [deadline, setDeadline] = useState(new Date());
-  const [type, setType] = useState("select");
+  const [deadline, setDeadline] = useState(null);
+
+  const [formatedDeadline, setFormatedDeadline] = useState("");
+
+  const formatDate = (date) => {
+    // console.log("from format", date);
+    if (!date) return;
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const formatedDate = `${day}-${month}-${year}`;
+    console.log(formatedDate);
+    setFormatedDeadline(formatedDate);
+    setDeadline(date);
+  };
+
+  console.log("from deadline", formatedDeadline);
+
+  const [type, setType] = useState("Easy");
 
   const handleForm = (e) => {
     e.preventDefault();
@@ -28,7 +45,7 @@ const CreateAssignment = () => {
       marks,
       description,
       type,
-      deadline,
+      formatedDeadline,
       userName,
       userMail,
     };
@@ -114,9 +131,9 @@ const CreateAssignment = () => {
                   name=""
                   id=""
                 >
-                  <option value="easy">Easy</option>
-                  <option value="medium">Medium</option>
-                  <option value="hard">Hard</option>
+                  <option value="Easy">Easy</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Hard">Hard</option>
                 </select>
               </div>
             </div>
@@ -128,7 +145,9 @@ const CreateAssignment = () => {
                 <DatePicker
                   className="input input-bordered"
                   selected={deadline}
-                  onChange={(date) => setDeadline(date)}
+                  onChange={(date) => formatDate(date)}
+                  // dateFormat="dd - mm - yyyy"
+                  placeholderText="Select deadline"
                 ></DatePicker>
               </div>
             </div>
