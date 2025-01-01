@@ -6,7 +6,7 @@ const StudyCard = () => {
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* card 01  */}
-        <div className="border rounded-xl p-6 p-6">
+        <div className="border rounded-xl p-6">
           <figure className="w-full">
             <img
               className="w-64"

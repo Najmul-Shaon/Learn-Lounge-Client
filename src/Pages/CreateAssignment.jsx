@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const CreateAssignment = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [selected, setSelected] = useState("select");
+  const navigation = useNavigate();
+  const { user } = useContext(AuthContext);
+  // console.log(user);
+  const [deadline, setDeadline] = useState(new Date());
+  const [type, setType] = useState("select");
 
   const handleForm = (e) => {
     e.preventDefault();
@@ -14,15 +19,42 @@ const CreateAssignment = () => {
     const phoroUrl = form.get("phoroUrl");
     const marks = form.get("marks");
     const description = form.get("description");
-    console.log(title, phoroUrl, marks, description, selected, startDate);
-    Swal.fire({
-      position: "top-start",
-      icon: "success",
-      title: "Assignment created successfully!!",
-      showConfirmButton: false,
-      timer: 1000,
-      // e.target.reset();
-    });
+    const userName = user.displayName;
+    const userMail = user.email;
+
+    const newAssignment = {
+      title,
+      phoroUrl,
+      marks,
+      description,
+      type,
+      deadline,
+      userName,
+      userMail,
+    };
+
+    // console.log(newAssignment);
+    fetch("http://localhost:5000/assignments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newAssignment),
+    }).then((res) =>
+      res.json().then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Assignment created successfully!!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+        e.target.reset();
+        navigation("/assignments");
+      })
+    );
   };
 
   return (
@@ -76,8 +108,8 @@ const CreateAssignment = () => {
                   <span className="label-text">Difficulty Level</span>
                 </label>
                 <select
-                  value={selected}
-                  onChange={(e) => setSelected(e.target.value)}
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
                   className="input input-bordered"
                   name=""
                   id=""
@@ -95,8 +127,8 @@ const CreateAssignment = () => {
               <div className="w-full">
                 <DatePicker
                   className="input input-bordered"
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
+                  selected={deadline}
+                  onChange={(date) => setDeadline(date)}
                 ></DatePicker>
               </div>
             </div>
