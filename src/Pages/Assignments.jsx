@@ -85,7 +85,7 @@ const Assignments = () => {
   //   };
 
   return (
-    <div className="container mx-auto my-24 grid grid-cols-2 gap-6">
+    <div className="container mx-auto my-24 grid grid-cols-1 md:grid-cols-2 gap-6">
       {allAssignments.length <= 0 ? (
         <h2 className="text-center text-3xl font-bold">
           There are no assignment available!!

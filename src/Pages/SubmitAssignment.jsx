@@ -1,10 +1,12 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const SubmitAssignment = () => {
   const assignment = useLoaderData();
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleAssignmentSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +32,11 @@ const SubmitAssignment = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.insertedId) {
+          toast.success("Successfully Submitted!");
+          e.target.reset();
+          navigate("/assignments");
+        }
       });
     console.log(submitAssignmentInfo);
   };
