@@ -1,18 +1,75 @@
 import { div } from "framer-motion/client";
+import { useContext } from "react";
 import { GrUpdate } from "react-icons/gr";
 import { MdDelete } from "react-icons/md";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Assignments = () => {
-  const allAssignments = useLoaderData();
-  console.log(allAssignments);
+  // get user data
+  const { user } = useContext(AuthContext);
 
-  //   const { title, type, phoroUrl, marks, description, deadline } =
-  //     allAssignments;
-  //   console.log(phoroUrl);
+  // load all assignments data from backend api
+  const allAssignments = useLoaderData();
+
+  const handleUpdate = (id) => {
+    console.log("update click", id);
+  };
+
+  // while click on delete button
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/assignment/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.userMail === user.email) {
+          Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              fetch(`http://localhost:5000/assignment/${id}`, {
+                method: "delete",
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  if (data.deletedCount > 0) {
+                    Swal.fire({
+                      title: "Deleted!",
+                      text: "Your assignment has been deleted.",
+                      icon: "success",
+                    });
+                  }
+                });
+            }
+          });
+        } else {
+          Swal.fire({
+            title: "You Are Not The Assignment Author!!",
+            icon: "warning",
+          });
+        }
+      });
+  };
+
+  const handleView = (id) => {
+    console.log("view click", id);
+  };
 
   return (
     <div className="container mx-auto my-24 grid grid-cols-2 gap-6">
+      {allAssignments.length <= 0 ? (
+        <h2 className="text-center text-3xl font-bold">
+          There are no assignment available!!
+        </h2>
+      ) : (
+        ""
+      )}
       {allAssignments.map((assignment) => (
         <div className="card lg:card-side shadow-xl" key={assignment._id}>
           <figure className="w-2/5">
@@ -45,13 +102,22 @@ const Assignments = () => {
             </div>
             {/* button action: update delete view  */}
             <div className="card-actions justify-end">
-              <button className="btn bg-orange-400 hover:bg-orange-300 text-lg font-bold text-white">
+              <button
+                onClick={() => handleUpdate(assignment._id)}
+                className="btn bg-orange-400 hover:bg-orange-300 text-lg font-bold text-white"
+              >
                 <GrUpdate></GrUpdate>
               </button>
-              <button className="btn bg-orange-400 hover:bg-orange-300 text-2xl font-bold text-white">
+              <button
+                onClick={() => handleDelete(assignment._id)}
+                className="btn bg-orange-400 hover:bg-orange-300 text-2xl font-bold text-white"
+              >
                 <MdDelete></MdDelete>
               </button>
-              <button className="btn bg-orange-400 hover:bg-orange-300 text-lg font-bold text-white">
+              <button
+                onClick={() => handleView(assignment._id)}
+                className="btn bg-orange-400 hover:bg-orange-300 text-lg font-bold text-white"
+              >
                 View
               </button>
             </div>
