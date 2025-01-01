@@ -13,6 +13,8 @@ import Assignments from "../Pages/Assignments";
 import UpdateAssignment from "../Pages/UpdateAssignment";
 import AssignmentDetails from "../Pages/AssignmentDetails";
 import SubmitAssignment from "../Pages/SubmitAssignment";
+import MySubmitted from "../Pages/MySubmitted";
+import PendingAssignment from "../Pages/PendingAssignment";
 // import AllCampaigns from "../Pages/AllCampaigns";
 // import AddNewCampaigns from "../Pages/AddNewCampaigns";
 // import MyCampaigns from "../Pages/MyCampaigns";
@@ -98,7 +100,7 @@ const Router = createBrowserRouter([
         path: "/myAssignment",
         element: (
           <PrivateRoute>
-            <h1>My Assignments</h1>
+            <MySubmitted></MySubmitted>
           </PrivateRoute>
         ),
       },
@@ -106,7 +108,7 @@ const Router = createBrowserRouter([
         path: "/pendingAssignments",
         element: (
           <PrivateRoute>
-            <h1>Pending</h1>
+            <PendingAssignment></PendingAssignment>
           </PrivateRoute>
         ),
       },
