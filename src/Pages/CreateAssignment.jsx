@@ -126,6 +126,7 @@ const CreateAssignment = () => {
                 </label>
                 <select
                   value={type}
+                  required
                   onChange={(e) => setType(e.target.value)}
                   className="input input-bordered"
                   name=""
@@ -144,6 +145,7 @@ const CreateAssignment = () => {
               <div className="w-full">
                 <DatePicker
                   className="input input-bordered"
+                  required
                   selected={deadline}
                   onChange={(date) => formatDate(date)}
                   // dateFormat="dd - mm - yyyy"

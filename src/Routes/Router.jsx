@@ -11,6 +11,8 @@ import Home from "../Pages/Home";
 import CreateAssignment from "../Pages/CreateAssignment";
 import Assignments from "../Pages/Assignments";
 import UpdateAssignment from "../Pages/UpdateAssignment";
+import AssignmentDetails from "../Pages/AssignmentDetails";
+import SubmitAssignment from "../Pages/SubmitAssignment";
 // import AllCampaigns from "../Pages/AllCampaigns";
 // import AddNewCampaigns from "../Pages/AddNewCampaigns";
 // import MyCampaigns from "../Pages/MyCampaigns";
@@ -67,6 +69,26 @@ const Router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <UpdateAssignment></UpdateAssignment>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/assignment/${params.id}`),
+      },
+      {
+        path: "/assignment/details/:id",
+        element: (
+          <PrivateRoute>
+            <AssignmentDetails></AssignmentDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/assignment/${params.id}`),
+      },
+      {
+        path: "/assignment/submit/:id",
+        element: (
+          <PrivateRoute>
+            <SubmitAssignment></SubmitAssignment>
           </PrivateRoute>
         ),
         loader: ({ params }) =>

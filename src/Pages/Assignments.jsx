@@ -75,9 +75,14 @@ const Assignments = () => {
       });
   };
 
-  const handleView = (id) => {
-    console.log("view click", id);
-  };
+  //   const handleView = (id) => {
+  //     console.log("view click", id);
+  //     fetch(`http://localhost:5000/assignment/${id}`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log(data);
+  //       });
+  //   };
 
   return (
     <div className="container mx-auto my-24 grid grid-cols-2 gap-6">
@@ -134,14 +139,15 @@ const Assignments = () => {
               >
                 <MdDelete></MdDelete>
               </button>
-              <button
-                onClick={() => handleView(assignment._id)}
-                className="btn bg-orange-400 hover:bg-orange-300 text-lg font-bold text-white"
-                data-tooltip-id="my-tooltip"
-                data-tooltip-content="View Details"
-              >
-                View
-              </button>
+              <Link to={`/assignment/details/${assignment._id}`}>
+                <button
+                  className="btn bg-orange-400 hover:bg-orange-300 text-lg font-bold text-white"
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content="View Details"
+                >
+                  View
+                </button>
+              </Link>
             </div>
           </div>
         </div>

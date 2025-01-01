@@ -128,6 +128,7 @@ const UpdateAssignment = () => {
                 </label>
                 <select
                   value={type}
+                  required
                   onChange={(e) => setType(e.target.value)}
                   className="input input-bordered"
                 >
@@ -148,6 +149,7 @@ const UpdateAssignment = () => {
                   defaultValue={assignment.formatedDeadline}
                   onChange={(date) => formatDate(date)}
                   placeholderText="Select deadline"
+                  required
                 ></DatePicker>
               </div>
             </div>
