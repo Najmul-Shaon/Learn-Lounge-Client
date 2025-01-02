@@ -112,6 +112,7 @@ const Router = createBrowserRouter([
             <PendingAssignment></PendingAssignment>
           </PrivateRoute>
         ),
+        loader: () => fetch("http://localhost:5000/assignments/pending"),
       },
       //   {
       //     path: "/mycampaigns",
