@@ -103,6 +103,7 @@ const Router = createBrowserRouter([
             <MySubmitted></MySubmitted>
           </PrivateRoute>
         ),
+        // loader: () => fetch(),
       },
       {
         path: "/pendingAssignments",
