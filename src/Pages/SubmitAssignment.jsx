@@ -13,15 +13,16 @@ const SubmitAssignment = () => {
     const form = new FormData(e.target);
     const assignmentLink = form.get("assignmentLink");
     const assignmentDescription = form.get("assignmentDescription");
-    const isPending = true;
+    // const isPending = true;
     const userMail = user.email;
     const assignmentId = assignment._id;
+    const assignmentInfo = { isPending: true, obtainMark: 0, feedback: "" };
     const submitAssignmentInfo = {
       assignmentLink,
       assignmentDescription,
       userMail,
       assignmentId,
-      isPending,
+      assignmentInfo,
     };
     fetch("http://localhost:5000/assignment/submit", {
       method: "POST",
@@ -35,7 +36,7 @@ const SubmitAssignment = () => {
         if (data.insertedId) {
           toast.success("Successfully Submitted!");
           e.target.reset();
-          navigate("/assignments");
+          navigate("/myAssignment");
         }
       });
     console.log(submitAssignmentInfo);

@@ -13,7 +13,7 @@ const MySubmitted = () => {
         setJobs(data);
       });
   }, [user.email]);
-  // console.log(jobs[0].isPending);
+  console.log(jobs[0]?.assignmentInfo?.feedback);
   return (
     <div className="overflow-x-auto container mx-auto my-24">
       <table className="table table-zebra">
@@ -43,16 +43,21 @@ const MySubmitted = () => {
           {jobs.map((job, i) => (
             <tr key={job._id}>
               <th className="text-base border text-center">{i + 1}</th>
-              <td className="text-base border text-start">{job.title}</td>
+              <td className="text-base border text-start">{job?.title}</td>
               <td className="text-base border text-center">
-                {job.isPending ? "Pending" : "Complete"}
+                {job?.assignmentInfo?.isPending ? "Pending" : "Complete"}
               </td>
-              <td className="text-base border text-center">{job.marks}</td>
+              <td className="text-base border text-center">{job?.marks}</td>
               <td className="text-base border text-center">
-                {job.obtainMark ? job.obtainMark : "Pending evaluation"}
+                {job?.assignmentInfo?.obtainMark >= 0 &&
+                job?.assignmentInfo?.isPending === false
+                  ? job?.assignmentInfo?.obtainMark
+                  : "Pending evaluation"}
               </td>
               <td className="text-base border text-center">
-                {job.feedback ? job.feedback : "Hold tight, we're on it!"}
+                {job?.assignmentInfo?.isPending === false
+                  ? job?.assignmentInfo?.feedback
+                  : "Pending evaluation"}
               </td>
             </tr>
           ))}
