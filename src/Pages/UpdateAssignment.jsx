@@ -12,7 +12,7 @@ const UpdateAssignment = () => {
 
   const navigation = useNavigate();
   const { user } = useContext(AuthContext);
-  const [type, setType] = useState(assignment.type || "Easy");
+  const [type, setType] = useState(assignment?.type || "Easy");
   const [deadline, setDeadline] = useState(null);
 
   const [formatedDeadline, setFormatedDeadline] = useState("");
