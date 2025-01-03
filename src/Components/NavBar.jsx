@@ -1,10 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import axios from "axios";
 
 const NavBar = () => {
   // load from auth provider
   const { user, logOut, setLoading } = useContext(AuthContext);
+  console.log(user);
+  const [userImg, setImg] = useState([]);
+  // console.log("from out", userImg[0]?.photo);
+  // console.log(user?.photoURL);
   // state for control theme: light or dark
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem("theme") || "light"
@@ -13,9 +18,16 @@ const NavBar = () => {
   const handleToggleTheme = (e) => {
     setIsDarkMode(e.target.checked ? "dark" : "light");
   };
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/user?email=${user?.email}`).then((res) => {
+      // console.log("inside from axios", res.data);
+      setImg(res.data);
+    });
+  }, [user?.email]);
+
   useEffect(() => {
     localStorage.setItem("theme", isDarkMode);
-    // const localStorageTheme = localStorage.getItem("theme");
     document.querySelector("html").setAttribute("data-theme", isDarkMode);
   }, [isDarkMode]);
   const links = (
@@ -31,21 +43,10 @@ const NavBar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to={"/createAssignment"} className="font-semibold text-base">
-          Create Assignment
-        </NavLink>
-      </li>
-      <li>
         <NavLink to="/pendingAssignments" className="font-semibold text-base">
           Pending Assignments
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/myAssignment" className="font-semibold text-base">
-          My Assignment
-        </NavLink>
-      </li>
-      
     </>
   );
   return (
@@ -85,21 +86,50 @@ const NavBar = () => {
       <div className="navbar-end flex gap-2">
         {/* <Link to="/login"> */}
         {user && user.email ? (
-          <div className="relative group">
-            {/* Initial Content  */}
+          <div className="flex items-center justify-center gap-2">
+            <div className="relative group">
+              {/* Initial Content  */}
 
-            <div className="avatar placeholder">
-              <div className="bg-neutral text-neutral-content w-12 rounded-full">
-                <span>SY</span>
+              {/* profile image */}
+              <div className="dropdown dropdown-end">
+                <div tabIndex={0} role="button" className="m-1">
+                  <div className="avatar">
+                    <div className="w-12 rounded-full">
+                      <img src={user?.photoURL || userImg[0]?.photo} />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  tabIndex={0}
+                  className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow space-y-2"
+                >
+                  <button className="btn">
+                    <Link
+                      to={"/createAssignment"}
+                      className="font-semibold text-base"
+                    >
+                      Create Assignment
+                    </Link>
+                  </button>
+                  <button className="btn">
+                    <Link
+                      to="/myAssignment"
+                      className="font-semibold text-base"
+                    >
+                      My Assignment
+                    </Link>
+                  </button>
+                </div>
+              </div>
+
+              {/* Overflow Content (appears on hover)  */}
+              <div className="absolute -left-36 top-6 bg-slate-400 text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-all">
+                <p>{user?.displayName || userImg[0]?.name}</p>
               </div>
             </div>
-
-            {/* Overflow Content (appears on hover)  */}
-            <div className="absolute bottom-[-50px] left-[-50px] mb-2 ml-2 w-auto bg-black text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-all">
-              <button onClick={logOut} className="btn">
-                Log Out
-              </button>
-            </div>
+            <button onClick={logOut} className="btn">
+              Log Out
+            </button>
           </div>
         ) : (
           <Link to="/login" className="btn">
@@ -127,7 +157,7 @@ const NavBar = () => {
 
             {/* sun icon */}
             <svg
-              className="swap-off h-10 w-10 fill-current"
+              className="swap-off h-6 w-6 fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -136,7 +166,7 @@ const NavBar = () => {
 
             {/* moon icon */}
             <svg
-              className="swap-on h-10 w-10 fill-current"
+              className="swap-on h-6 w-6 fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
