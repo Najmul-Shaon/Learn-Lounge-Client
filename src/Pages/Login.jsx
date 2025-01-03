@@ -1,10 +1,3 @@
-// import { useContext, useRef, useState } from "react";
-// import { Link, useLocation, useNavigate } from "react-router-dom";
-// import { AuthContext } from "../Provider/AuthProvider";
-// import toast from "react-hot-toast";
-// import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-// import { FaGoogle } from "react-icons/fa6";
-// import TypeWriter from "../Components/TypeWriter";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { FaEyeSlash } from "react-icons/fa";
 import { useContext, useRef, useState } from "react";
@@ -60,17 +53,11 @@ const Login = () => {
       });
   };
 
-  // const handleForget = (emailRef) => {
-  //   setEmail(emailRef.current.value);
-  // };
-
   return (
     <div>
       <div className="hero bg-base-200 min-h-screen mt-24 p-8">
         <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl">
-          {/* <span className="text-2xl font-bold text-center mt-4 text-green-400">
-            <TypeWriter content={" "} written={["Login Now"]}></TypeWriter>
-          </span> */}
+          
           <form onSubmit={handleSubmit} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -83,14 +70,7 @@ const Login = () => {
                 className="input input-bordered"
                 required
               />
-              {/* <input
-                type="email"
-                ref={emailRef}
-                name="email"
-                placeholder="email"
-                className="input input-bordered"
-                required
-              /> */}
+             
             </div>
             <div className="form-control relative">
               <label className="label">

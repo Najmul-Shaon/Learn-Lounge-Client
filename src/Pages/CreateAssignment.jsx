@@ -145,11 +145,7 @@ const CreateAssignment = () => {
                 {error?.marks && (
                   <label className="text-xs text-red-400">{error?.marks}</label>
                 )}
-                {/* {error?.name && (
-                  <label className="label text-xs text-red-500">
-                    {error.name}
-                  </label>
-                )} */}
+                
               </div>
               <div className="form-control">
                 <label className="label">

@@ -118,9 +118,7 @@ const SignUp = () => {
   return (
     <div className="hero bg-base-200 min-h-screen mt-24 py-16">
       <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl">
-        {/* <span className="text-2xl font-bold text-center mt-4 text-green-400">
-          <TypeWriter content={" "} written={["SignUp Now"]}></TypeWriter>
-        </span> */}
+       
         <form onSubmit={handleSubmit} className="card-body">
           <div className="form-control">
             <label className="label">

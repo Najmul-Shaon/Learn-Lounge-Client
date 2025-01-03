@@ -1,8 +1,7 @@
 const FAQ = () => {
   return (
     <div className="my-24 flex flex-col items-center">
-      {/* <h3 className="text-center text-3xl font-bold text-orange-400 mb-6"> */}
-      <h3 className="text-center text-3xl font-bold text-orange-400 mb-6">
+      <h3 className="text-center text-3xl font-bold  mb-6">
         Frequently Asked Questions
       </h3>
       <div className="join join-vertical w-2/3">
