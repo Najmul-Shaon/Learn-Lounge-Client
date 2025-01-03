@@ -31,14 +31,8 @@ const Router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        //   loader: () => fetch("https://crowncube-server.vercel.app"),
       },
-      //   {
-      //     path: "/campaign/:id",
-      //     element: <PrivateRoute>{/* <Details></Details> */}</PrivateRoute>,
-      //     loader: ({ params }) =>
-      //       fetch(`https://crowncube-server.vercel.app/campaign/${params.id}`),
-      //   },
+
       {
         path: "/login",
         element: <Login></Login>,
@@ -47,11 +41,7 @@ const Router = createBrowserRouter([
         path: "/signup",
         element: <SignUp></SignUp>,
       },
-      //   {
-      //     path: "/allCampaigns",
-      //     // element: <AllCampaigns></AllCampaigns>,
-      //     loader: () => fetch("https://crowncube-server.vercel.app/allCampaigns"),
-      //   },
+
       {
         path: "/assignments",
         element: <Assignments></Assignments>,
@@ -103,7 +93,6 @@ const Router = createBrowserRouter([
             <MySubmitted></MySubmitted>
           </PrivateRoute>
         ),
-        // loader: () => fetch(),
       },
       {
         path: "/pendingAssignments",
@@ -114,31 +103,6 @@ const Router = createBrowserRouter([
         ),
         loader: () => fetch("http://localhost:5000/assignments/pending"),
       },
-      //   {
-      //     path: "/mycampaigns",
-      //     element: (
-      //       <PrivateRoute>{/* <MyCampaigns></MyCampaigns> */}</PrivateRoute>
-      //     ),
-      //     loader: () => fetch("https://crowncube-server.vercel.app/myCampaigns"),
-      //   },
-      //   {
-      //     path: "/mydonations",
-      //     element: (
-      //       <PrivateRoute>{/* <MyDonations></MyDonations> */}</PrivateRoute>
-      //     ),
-      //     loader: () => fetch("https://crowncube-server.vercel.app/mydonations"),
-      //   },
-
-      //   {
-      //     path: "/myCampaigns/update/:id",
-      //     element: (
-      //       <PrivateRoute>{/* <UpdateCampaign></UpdateCampaign> */}</PrivateRoute>
-      //     ),
-      //     loader: ({ params }) =>
-      //       fetch(
-      //         `https://crowncube-server.vercel.app/myCampaigns/update/${params.id}`
-      //       ),
-      //   },
     ],
   },
 ]);

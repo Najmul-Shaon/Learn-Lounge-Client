@@ -14,7 +14,7 @@ const CreateAssignment = () => {
   // error handling state
   const [error, setError] = useState({});
 
-  const maxCharacter = 100;
+  const maxCharacter = 250;
   const [text, setText] = useState("");
 
   const handleTextChange = (e) => {

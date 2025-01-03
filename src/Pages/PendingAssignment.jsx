@@ -1,18 +1,20 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { FaRegWindowClose } from "react-icons/fa";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
-import axios from "axios";
 
 const PendingAssignment = () => {
   const pendingAssignments = useLoaderData();
+  // console.log(pendingAssignments);
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  // console.log(pendingAssignments[0]?.userMail);
-  // console.log(user?.email);
-  // assignmentId
+
+  const maxCharacter = 50;
+  const [text, setText] = useState("");
+
+  const [error, setError] = useState({});
 
   const handleGiveMark = (userMail) => {
     if (user.email === userMail) {
@@ -26,10 +28,18 @@ const PendingAssignment = () => {
     }
   };
 
-  const handleModalSubmit = (e, id) => {
+  const handleModalSubmit = (e, id, totalMarks) => {
     e.preventDefault();
+    console.log(totalMarks);
     const form = new FormData(e.target);
     const obtainMark = parseInt(form.get("obtainMark"));
+    if (obtainMark > totalMarks) {
+      setError({
+        ...error,
+        obtainMarkMessage: `Obtain mark cannot be more then total marks ${totalMarks}`,
+      });
+      return;
+    }
     const feedback = form.get("feedback");
     const marksInfo = { obtainMark, feedback, isPending: false };
 
@@ -130,7 +140,11 @@ const PendingAssignment = () => {
                         {/* give marks and feedback  */}
                         <form
                           onSubmit={(e) =>
-                            handleModalSubmit(e, pendingAssignment?._id)
+                            handleModalSubmit(
+                              e,
+                              pendingAssignment?._id,
+                              pendingAssignment?.marks
+                            )
                           }
                         >
                           <div>
@@ -145,16 +159,25 @@ const PendingAssignment = () => {
                                 className="input input-bordered"
                                 required
                               />
+                              {error?.obtainMarkMessage && (
+                                <label className="label text-xs text-red-400">
+                                  {error?.obtainMarkMessage}
+                                </label>
+                              )}
                             </div>
                             <div className="w-full">
                               <label className="label">
-                                <span className="label-text">Feedback</span>
+                                <span className="label-text">
+                                  Feedback ({text?.length}/{maxCharacter})
+                                </span>
                               </label>
                               <textarea
                                 className="textarea textarea-bordered"
                                 name="feedback"
                                 placeholder="Feedback here"
                                 required
+                                maxLength={maxCharacter}
+                                onChange={(e) => setText(e.target.value)}
                               ></textarea>
                             </div>
                           </div>

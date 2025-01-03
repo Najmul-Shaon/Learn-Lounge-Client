@@ -20,7 +20,7 @@ const UpdateAssignment = () => {
   const [error, setError] = useState({});
 
   // validation text area
-  const maxCharacter = 100;
+  const maxCharacter = 250;
   const [text, setText] = useState("");
 
   const handleTextChange = (e) => {

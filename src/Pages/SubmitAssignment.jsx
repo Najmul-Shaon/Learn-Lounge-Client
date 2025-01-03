@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
@@ -7,6 +7,9 @@ const SubmitAssignment = () => {
   const assignment = useLoaderData();
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const maxCharacter = 50;
+  const [text, setText] = useState("");
 
   const handleAssignmentSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +42,6 @@ const SubmitAssignment = () => {
           navigate("/myAssignment");
         }
       });
-    console.log(submitAssignmentInfo);
   };
 
   return (
@@ -51,7 +53,7 @@ const SubmitAssignment = () => {
             <span className="label-text">Put the link here</span>
           </label>
           <input
-            type="link"
+            type="url"
             name="assignmentLink"
             required
             placeholder="Put the link here"
@@ -60,13 +62,17 @@ const SubmitAssignment = () => {
         </div>
         <div className="w-full">
           <label className="label">
-            <span className="label-text">Put the note here</span>
+            <span className="label-text">
+              Put the note here ({text.length} / {maxCharacter})
+            </span>
           </label>
           <textarea
             className="textarea textarea-bordered w-full"
             required
             placeholder="Put the note here"
             name="assignmentDescription"
+            maxLength={maxCharacter}
+            onChange={(e) => setText(e.target.value)}
           ></textarea>
         </div>
         <button className="btn bg-orange-400 hover:bg-orange-300 w-full text-white text-lg font-bold">
