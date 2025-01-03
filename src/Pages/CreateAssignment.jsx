@@ -4,7 +4,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
 
 const CreateAssignment = () => {
   const navigation = useNavigate();
@@ -23,14 +22,10 @@ const CreateAssignment = () => {
   };
 
   const formatDate = (date) => {
-    // if (!date) return;
     const today = new Date();
     if (today > date) {
-      console.log("big");
       setError({ ...error, message: "Pick a date from future." });
     }
-    // console.log(today);
-    // console.log(date);
 
     const pickedYear = date.getFullYear();
     const pickedMonth = String(date.getMonth() + 1).padStart(2, "0");
@@ -46,7 +41,7 @@ const CreateAssignment = () => {
     const title = form.get("title");
 
     // title validation {title cannot less then 10 character}
-    if (title.length < 1) {
+    if (title.length < 10) {
       setError({
         ...error,
         title: "Title must be minimum 10 character length.",

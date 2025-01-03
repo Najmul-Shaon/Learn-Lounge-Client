@@ -8,7 +8,6 @@ import toast from "react-hot-toast";
 
 const UpdateAssignment = () => {
   const assignment = useLoaderData();
-  //   console.log(assignment);
 
   const navigation = useNavigate();
   const { user } = useContext(AuthContext);
@@ -17,8 +16,22 @@ const UpdateAssignment = () => {
 
   const [formatedDeadline, setFormatedDeadline] = useState("");
 
+  // error handling state
+  const [error, setError] = useState({});
+
+  // validation text area
+  const maxCharacter = 100;
+  const [text, setText] = useState("");
+
+  const handleTextChange = (e) => {
+    setText(e.target.value);
+  };
+
   const formatDate = (date) => {
-    if (!date) return;
+    const today = new Date();
+    if (today > date) {
+      setError({ ...error, message: "Pick a date from future." });
+    }
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const day = String(date.getDate()).padStart(2, "0");
@@ -31,8 +44,22 @@ const UpdateAssignment = () => {
     e.preventDefault();
     const form = new FormData(e.target);
     const title = form.get("title");
+    // title validation {title cannot less then 10 character}
+    if (title.length < 10) {
+      setError({
+        ...error,
+        title: "Title must be minimum 10 character length.",
+      });
+      return;
+    }
     const phoroUrl = form.get("phoroUrl");
     const marks = form.get("marks");
+    // validate marks {total marks should not less 50 and not more then 100}
+    if (marks < 50 || marks > 100) {
+      console.log("mark from inside if", marks);
+      setError({ ...error, marks: "Give between 50-100" });
+      return;
+    }
     const description = form.get("description");
     const userName = user.displayName;
     const userMail = user.email;
@@ -93,6 +120,9 @@ const UpdateAssignment = () => {
                 className="input input-bordered"
                 required
               />
+              {error?.title && (
+                <label className="text-xs text-red-400">{error?.title}</label>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -121,6 +151,9 @@ const UpdateAssignment = () => {
                   className="input input-bordered"
                   required
                 />
+                {error?.marks && (
+                  <label className="text-xs text-red-400">{error?.marks}</label>
+                )}
               </div>
               <div className="form-control w-1/2">
                 <label className="label">
@@ -151,11 +184,18 @@ const UpdateAssignment = () => {
                   placeholderText="Select deadline"
                   required
                 ></DatePicker>
+                {error?.message && (
+                  <label className="text-xs text-red-400">
+                    {error?.message}
+                  </label>
+                )}
               </div>
             </div>
             <div>
               <label className="label">
-                <span className="lebel-text">Description</span>
+                <span className="lebel-text">
+                  Description ({text.length} / {maxCharacter})
+                </span>
               </label>
               <div className="w-full">
                 <textarea
@@ -163,6 +203,8 @@ const UpdateAssignment = () => {
                   name="description"
                   defaultValue={assignment.description}
                   placeholder="Description here"
+                  maxLength={maxCharacter}
+                  onChange={handleTextChange}
                 ></textarea>
               </div>
             </div>
