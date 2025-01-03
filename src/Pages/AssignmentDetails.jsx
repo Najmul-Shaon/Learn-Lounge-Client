@@ -2,13 +2,12 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const AssignmentDetails = () => {
   const assignment = useLoaderData();
-  console.log(assignment);
   return (
     <div className="card lg:card-side shadow-xl container mx-auto my-24">
-      <figure className="w-2/5">
+      <figure className="w-full md:w-2/5">
         <img className="w-full" src={assignment.phoroUrl} alt="Album" />
       </figure>
-      <div className="card-body w-3/5">
+      <div className="card-body w-full md:w-3/5">
         <h2 className="card-title text-2xl">{assignment.title}</h2>
         <p className="text-lg">{assignment.description}</p>
         <div className="flex items-center justify-between gap-6 my-6">

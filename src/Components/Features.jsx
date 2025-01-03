@@ -10,7 +10,7 @@ const Features = () => {
       <h5 className="text-xl text-center font-bold">
         (and this is just the beginning)
       </h5>
-      <div className="flex items-center justify-evenly my-6">
+      <div className="flex flex-col gap-3 md:flex-row items-center justify-evenly my-6">
         {/* feature 01  */}
         <div className="card bg-orange-100 text-black max-w-96">
           <div className="card-body items-center text-center">
