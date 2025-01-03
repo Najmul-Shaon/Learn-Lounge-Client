@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import axios from "axios";
 
 const MySubmitted = () => {
   const { user } = useContext(AuthContext);
@@ -7,13 +8,14 @@ const MySubmitted = () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/assignments/submitted?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setJobs(data);
+    axios
+      .get(`http://localhost:5000/assignments/submitted?email=${user.email}`, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        setJobs(res.data);
       });
   }, [user.email]);
-  console.log(jobs[0]?.assignmentInfo?.feedback);
   return (
     <div className="overflow-x-auto container mx-auto my-24">
       <table className="table table-zebra">

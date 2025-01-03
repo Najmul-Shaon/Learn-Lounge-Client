@@ -45,11 +45,7 @@ const NavBar = () => {
           My Assignment
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/profile" className="font-semibold text-base">
-          Profile
-        </NavLink>
-      </li>
+      
     </>
   );
   return (

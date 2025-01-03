@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const CreateAssignment = () => {
   const navigation = useNavigate();
@@ -74,15 +75,12 @@ const CreateAssignment = () => {
       userMail,
     };
 
-    fetch("http://localhost:5000/assignments", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newAssignment),
-    }).then((res) =>
-      res.json().then((data) => {
-        if (data.insertedId) {
+    axios
+      .post("http://localhost:5000/assignments", newAssignment, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        if (res.data.insertedId) {
           Swal.fire({
             position: "center",
             icon: "success",
@@ -93,8 +91,7 @@ const CreateAssignment = () => {
         }
         e.target.reset();
         navigation("/assignments");
-      })
-    );
+      });
   };
 
   return (
