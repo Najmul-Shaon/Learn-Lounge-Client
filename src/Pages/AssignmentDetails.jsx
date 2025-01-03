@@ -25,8 +25,6 @@ const AssignmentDetails = () => {
               {assignment.deadline || assignment.formatedDeadline}
             </p>
           </div>
-          {/* <p className="btn btn-outline text-lg">Effort Scale:Easy</p>
-            <p className="btn btn-outline text-lg">Marks:100</p> */}
         </div>
         {/* button action: update delete view  */}
         <div className="card-actions justify-end">

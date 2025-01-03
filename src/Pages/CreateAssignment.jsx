@@ -10,31 +10,60 @@ const CreateAssignment = () => {
   const navigation = useNavigate();
   const { user } = useContext(AuthContext);
   const [deadline, setDeadline] = useState(null);
-
+  const [type, setType] = useState("Easy");
   const [formatedDeadline, setFormatedDeadline] = useState("");
+  // error handling state
+  const [error, setError] = useState({});
+
+  const maxCharacter = 100;
+  const [text, setText] = useState("");
+
+  const handleTextChange = (e) => {
+    setText(e.target.value);
+  };
 
   const formatDate = (date) => {
-    // console.log("from format", date);
-    if (!date) return;
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    const formatedDate = `${day}-${month}-${year}`;
-    console.log(formatedDate);
+    // if (!date) return;
+    const today = new Date();
+    if (today > date) {
+      console.log("big");
+      setError({ ...error, message: "Pick a date from future." });
+    }
+    // console.log(today);
+    // console.log(date);
+
+    const pickedYear = date.getFullYear();
+    const pickedMonth = String(date.getMonth() + 1).padStart(2, "0");
+    const pickedDay = String(date.getDate()).padStart(2, "0");
+    const formatedDate = `${pickedDay}-${pickedMonth}-${pickedYear}`;
     setFormatedDeadline(formatedDate);
     setDeadline(date);
   };
-
-  console.log("from deadline", formatedDeadline);
-
-  const [type, setType] = useState("Easy");
 
   const handleForm = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
     const title = form.get("title");
+
+    // title validation {title cannot less then 10 character}
+    if (title.length < 1) {
+      setError({
+        ...error,
+        title: "Title must be minimum 10 character length.",
+      });
+      return;
+    }
+    // get photo url from form
     const phoroUrl = form.get("phoroUrl");
-    const marks = form.get("marks");
+
+    // get marks from the form
+    const marks = parseInt(form.get("marks"));
+    // validate marks {total marks should not less 50 and not more then 100}
+    if (marks < 50 || marks > 100) {
+      console.log("mark from inside if", marks);
+      setError({ ...error, marks: "Give between 50-100" });
+      return;
+    }
     const description = form.get("description");
     const userName = user.displayName;
     const userMail = user.email;
@@ -50,7 +79,6 @@ const CreateAssignment = () => {
       userMail,
     };
 
-    // console.log(newAssignment);
     fetch("http://localhost:5000/assignments", {
       method: "POST",
       headers: {
@@ -93,6 +121,9 @@ const CreateAssignment = () => {
                 className="input input-bordered"
                 required
               />
+              {error?.title && (
+                <label className="text-xs text-red-400">{error?.title}</label>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -119,6 +150,14 @@ const CreateAssignment = () => {
                   className="input input-bordered"
                   required
                 />
+                {error?.marks && (
+                  <label className="text-xs text-red-400">{error?.marks}</label>
+                )}
+                {/* {error?.name && (
+                  <label className="label text-xs text-red-500">
+                    {error.name}
+                  </label>
+                )} */}
               </div>
               <div className="form-control">
                 <label className="label">
@@ -148,20 +187,28 @@ const CreateAssignment = () => {
                   required
                   selected={deadline}
                   onChange={(date) => formatDate(date)}
-                  // dateFormat="dd - mm - yyyy"
                   placeholderText="Select deadline"
                 ></DatePicker>
+                {error?.message && (
+                  <label className="text-xs text-red-400">
+                    {error?.message}
+                  </label>
+                )}
               </div>
             </div>
             <div>
               <label className="label">
-                <span className="lebel-text">Description</span>
+                <span className="lebel-text">
+                  Description ({text.length} / {maxCharacter})
+                </span>
               </label>
               <div className="w-full">
                 <textarea
                   className="textarea textarea-bordered w-full"
                   name="description"
                   placeholder="Description here"
+                  maxLength={maxCharacter}
+                  onChange={handleTextChange}
                 ></textarea>
               </div>
             </div>

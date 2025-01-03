@@ -133,7 +133,7 @@ const SignUp = () => {
               className="input input-bordered"
               required
             />
-            {error.name && (
+            {error?.name && (
               <label className="label text-xs text-red-500">{error.name}</label>
             )}
           </div>
