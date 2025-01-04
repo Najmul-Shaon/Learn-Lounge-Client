@@ -6,7 +6,6 @@ import axios from "axios";
 const NavBar = () => {
   // load from auth provider
   const { user, logOut, setLoading } = useContext(AuthContext);
-  console.log(user);
   const [userImg, setImg] = useState([]);
   // console.log("from out", userImg[0]?.photo);
   // console.log(user?.photoURL);
