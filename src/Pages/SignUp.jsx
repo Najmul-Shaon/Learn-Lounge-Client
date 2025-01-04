@@ -34,7 +34,6 @@ const SignUp = () => {
       })
       .catch((error) => {
         const errorMsg = error.message;
-        console.log(errorMsg);
         toast.error(errorMsg);
       });
   };
@@ -83,7 +82,6 @@ const SignUp = () => {
     createNewUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
         const creationTime = result?.user?.metadata?.creationTime;
         const lastSignInTime = result?.user?.metadata?.lastSignInTime;
         const newUser = {
@@ -93,7 +91,7 @@ const SignUp = () => {
           creationTime,
           lastSignInTime,
         };
-        fetch("http://localhost:5000/users", {
+        fetch("https://learn-lounge-server.vercel.app/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -103,7 +101,6 @@ const SignUp = () => {
           .then((res) => res.json())
           .then((data) => {
             toast.success("Welcome!!");
-            console.log("signed up", data);
             setUser(user);
             e.target.reset();
             navigate("/");
@@ -118,7 +115,6 @@ const SignUp = () => {
   return (
     <div className="hero bg-base-200 min-h-screen mt-24 py-16">
       <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl">
-       
         <form onSubmit={handleSubmit} className="card-body">
           <div className="form-control">
             <label className="label">

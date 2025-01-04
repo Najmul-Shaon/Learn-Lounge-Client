@@ -7,7 +7,6 @@ import Swal from "sweetalert2";
 
 const PendingAssignment = () => {
   const pendingAssignments = useLoaderData();
-  console.log(pendingAssignments?.data[0]);
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
@@ -30,7 +29,6 @@ const PendingAssignment = () => {
 
   const handleModalSubmit = (e, id, totalMarks) => {
     e.preventDefault();
-    console.log(totalMarks);
     const form = new FormData(e.target);
     const obtainMark = parseInt(form.get("obtainMark"));
     if (obtainMark > totalMarks) {
@@ -43,7 +41,7 @@ const PendingAssignment = () => {
     const feedback = form.get("feedback");
     const marksInfo = { obtainMark, feedback, isPending: false };
 
-    fetch(`http://localhost:5000/assignment/update/${id}`, {
+    fetch(`https://learn-lounge-server.vercel.app/assignment/update/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -52,14 +50,11 @@ const PendingAssignment = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount > 0) {
           toast.success("Successfully Evaluated the Assignment.");
           navigate("/pendingAssignments");
         }
       });
-
-    console.log(marksInfo, id);
   };
   return (
     <div className="overflow-x-auto container mx-auto my-24">

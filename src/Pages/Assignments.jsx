@@ -19,20 +19,24 @@ const Assignments = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/assignments?filter=${type}`)
+      .get(`https://learn-lounge-server.vercel.app/assignments?filter=${type}`)
       .then((res) => setAllAssignments(res.data));
   }, [type]);
 
   const handleSearch = () => {
     axios
-      .get(`http://localhost:5000/assignments?search=${search}`)
+      .get(
+        `https://learn-lounge-server.vercel.app/assignments?search=${search}`
+      )
       .then((res) => setAllAssignments(res.data));
     setSearch("");
   };
 
   const handleUpdate = (id) => {
     axios
-      .get(`http://localhost:5000/assignment/${id}`, { withCredentials: true })
+      .get(`https://learn-lounge-server.vercel.app/assignment/${id}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         if (res?.data?.userMail === user?.email) {
           navigate(`/assignment/update/${id}`);
@@ -47,10 +51,12 @@ const Assignments = () => {
 
   // while click on delete button
   const handleDelete = (id) => {
-    // fetch(`http://localhost:5000/assignment/${id}`)
+    // fetch(`https://learn-lounge-server.vercel.app/assignment/${id}`)
     //   .then((res) => res.json())
     axios
-      .get(`http://localhost:5000/assignment/${id}`, { withCredentials: true })
+      .get(`https://learn-lounge-server.vercel.app/assignment/${id}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         if (res?.data?.userMail === user?.email) {
           Swal.fire({
@@ -63,14 +69,17 @@ const Assignments = () => {
             confirmButtonText: "Yes, delete it!",
           }).then((result) => {
             if (result.isConfirmed) {
-              // fetch(`http://localhost:5000/assignment/${id}`, {
+              // fetch(`https://learn-lounge-server.vercel.app/assignment/${id}`, {
               //   method: "delete",
               // })
               //   .then((res) => res.json())
               axios
-                .delete(`http://localhost:5000/assignment/${id}`, {
-                  withCredentials: true,
-                })
+                .delete(
+                  `https://learn-lounge-server.vercel.app/assignment/${id}`,
+                  {
+                    withCredentials: true,
+                  }
+                )
                 .then((res) => {
                   if (res?.data?.deletedCount > 0) {
                     Swal.fire({

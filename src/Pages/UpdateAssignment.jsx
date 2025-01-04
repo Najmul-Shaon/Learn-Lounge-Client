@@ -10,8 +10,6 @@ import axios from "axios";
 const UpdateAssignment = () => {
   const assignment = useLoaderData();
 
-  console.log(assignment);
-
   const navigation = useNavigate();
   const { user } = useContext(AuthContext);
   const [type, setType] = useState(assignment?.data?.type || "Easy");
@@ -59,7 +57,6 @@ const UpdateAssignment = () => {
     const marks = form.get("marks");
     // validate marks {total marks should not less 50 and not more then 100}
     if (marks < 50 || marks > 100) {
-      console.log("mark from inside if", marks);
       setError({ ...error, marks: "Give between 50-100" });
       return;
     }
@@ -78,7 +75,7 @@ const UpdateAssignment = () => {
       userMail,
     };
 
-    // fetch(`http://localhost:5000/assignment/${assignment._id}`, {
+    // fetch(`https://learn-lounge-server.vercel.app/assignment/${assignment._id}`, {
     //   method: "PUT",
     //   headers: {
     //     "Content-Type": "application/json",
@@ -88,7 +85,7 @@ const UpdateAssignment = () => {
     //   res.json()
     axios
       .put(
-        `http://localhost:5000/assignment/${assignment?.data?._id}`,
+        `https://learn-lounge-server.vercel.app/assignment/${assignment?.data?._id}`,
         updateAssignment,
         { withCredentials: true }
       )

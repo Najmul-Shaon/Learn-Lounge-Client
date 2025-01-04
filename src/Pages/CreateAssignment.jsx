@@ -56,7 +56,6 @@ const CreateAssignment = () => {
     const marks = parseInt(form.get("marks"));
     // validate marks {total marks should not less 50 and not more then 100}
     if (marks < 50 || marks > 100) {
-      console.log("mark from inside if", marks);
       setError({ ...error, marks: "Give between 50-100" });
       return;
     }
@@ -76,9 +75,13 @@ const CreateAssignment = () => {
     };
 
     axios
-      .post("http://localhost:5000/assignments", newAssignment, {
-        withCredentials: true,
-      })
+      .post(
+        "https://learn-lounge-server.vercel.app/assignments",
+        newAssignment,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({
@@ -145,7 +148,6 @@ const CreateAssignment = () => {
                 {error?.marks && (
                   <label className="text-xs text-red-400">{error?.marks}</label>
                 )}
-                
               </div>
               <div className="form-control">
                 <label className="label">

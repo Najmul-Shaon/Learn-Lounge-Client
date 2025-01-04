@@ -7,8 +7,7 @@ const NavBar = () => {
   // load from auth provider
   const { user, logOut, setLoading } = useContext(AuthContext);
   const [userImg, setImg] = useState([]);
-  // console.log("from out", userImg[0]?.photo);
-  // console.log(user?.photoURL);
+
   // state for control theme: light or dark
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem("theme") || "light"
@@ -19,10 +18,11 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/user?email=${user?.email}`).then((res) => {
-      // console.log("inside from axios", res.data);
-      setImg(res.data);
-    });
+    axios
+      .get(`https://learn-lounge-server.vercel.app/user?email=${user?.email}`)
+      .then((res) => {
+        setImg(res.data);
+      });
   }, [user?.email]);
 
   useEffect(() => {

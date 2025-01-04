@@ -5,7 +5,6 @@ import toast from "react-hot-toast";
 
 const SubmitAssignment = () => {
   const assignment = useLoaderData();
-  console.log(assignment?.data);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -28,7 +27,7 @@ const SubmitAssignment = () => {
       assignmentId,
       assignmentInfo,
     };
-    fetch("http://localhost:5000/assignment/submit", {
+    fetch("https://learn-lounge-server.vercel.app/assignment/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

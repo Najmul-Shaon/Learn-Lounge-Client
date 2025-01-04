@@ -9,9 +9,12 @@ const MySubmitted = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/assignments/submitted?email=${user.email}`, {
-        withCredentials: true,
-      })
+      .get(
+        `https://learn-lounge-server.vercel.app/assignments/submitted?email=${user.email}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         setJobs(res.data);
       });
