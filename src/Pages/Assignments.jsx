@@ -15,10 +15,6 @@ const Assignments = () => {
   const { user } = useContext(AuthContext);
   const [type, setType] = useState("All type");
   const [search, setSearch] = useState("");
-
-  // console.log(type);
-  console.log(search);
-
   const [allAssignments, setAllAssignments] = useState(loadedAllAssignments);
 
   useEffect(() => {
@@ -28,7 +24,6 @@ const Assignments = () => {
   }, [type]);
 
   const handleSearch = () => {
-    console.log("serach value", search);
     axios
       .get(`http://localhost:5000/assignments?search=${search}`)
       .then((res) => setAllAssignments(res.data));
@@ -36,11 +31,10 @@ const Assignments = () => {
   };
 
   const handleUpdate = (id) => {
-    console.log("update click", id);
-    fetch(`http://localhost:5000/assignment/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.userMail === user?.email) {
+    axios
+      .get(`http://localhost:5000/assignment/${id}`, { withCredentials: true })
+      .then((res) => {
+        if (res?.data?.userMail === user?.email) {
           navigate(`/assignment/update/${id}`);
         } else {
           Swal.fire({
@@ -53,10 +47,12 @@ const Assignments = () => {
 
   // while click on delete button
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/assignment/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.userMail === user?.email) {
+    // fetch(`http://localhost:5000/assignment/${id}`)
+    //   .then((res) => res.json())
+    axios
+      .get(`http://localhost:5000/assignment/${id}`, { withCredentials: true })
+      .then((res) => {
+        if (res?.data?.userMail === user?.email) {
           Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -67,12 +63,16 @@ const Assignments = () => {
             confirmButtonText: "Yes, delete it!",
           }).then((result) => {
             if (result.isConfirmed) {
-              fetch(`http://localhost:5000/assignment/${id}`, {
-                method: "delete",
-              })
-                .then((res) => res.json())
-                .then((data) => {
-                  if (data.deletedCount > 0) {
+              // fetch(`http://localhost:5000/assignment/${id}`, {
+              //   method: "delete",
+              // })
+              //   .then((res) => res.json())
+              axios
+                .delete(`http://localhost:5000/assignment/${id}`, {
+                  withCredentials: true,
+                })
+                .then((res) => {
+                  if (res?.data?.deletedCount > 0) {
                     Swal.fire({
                       title: "Deleted!",
                       text: "Your assignment has been deleted.",

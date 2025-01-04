@@ -56,7 +56,11 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/assignment/${params.id}`),
+          axios.get(`http://localhost:5000/assignment/${params.id}`, {
+            withCredentials: true,
+          }),
+        // loader: ({ params }) =>
+        //   fetch(`http://localhost:5000/assignment/${params.id}`),
       },
       {
         path: "/assignment/details/:id",
@@ -78,8 +82,12 @@ const Router = createBrowserRouter([
             <SubmitAssignment></SubmitAssignment>
           </PrivateRoute>
         ),
+        // loader: ({ params }) =>
+        //   fetch(`http://localhost:5000/assignment/${params.id}`),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/assignment/${params.id}`),
+          axios.get(`http://localhost:5000/assignment/${params.id}`, {
+            withCredentials: true,
+          }),
       },
       {
         path: "/myAssignment",

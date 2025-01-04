@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 
 const PendingAssignment = () => {
   const pendingAssignments = useLoaderData();
+  console.log(pendingAssignments?.data[0]);
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
@@ -62,7 +63,7 @@ const PendingAssignment = () => {
   };
   return (
     <div className="overflow-x-auto container mx-auto my-24">
-      {pendingAssignments.data?.length <= 0 ? (
+      {pendingAssignments?.data?.length <= 0 ? (
         <h3 className="text-3xl text-center">
           There are no pending assignment available.
         </h3>
@@ -90,7 +91,7 @@ const PendingAssignment = () => {
           </thead>
           <tbody>
             {/* rows */}
-            {pendingAssignments.data.map((pendingAssignment, i) => (
+            {pendingAssignments?.data?.map((pendingAssignment, i) => (
               <tr key={pendingAssignment._id}>
                 <th className="text-base border text-center">{i + 1}</th>
                 <td className="text-base border text-center">

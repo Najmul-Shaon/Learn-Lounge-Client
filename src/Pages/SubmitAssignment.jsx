@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 
 const SubmitAssignment = () => {
   const assignment = useLoaderData();
+  console.log(assignment?.data);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -18,7 +19,7 @@ const SubmitAssignment = () => {
     const assignmentDescription = form.get("assignmentDescription");
     // const isPending = true;
     const userMail = user.email;
-    const assignmentId = assignment._id;
+    const assignmentId = assignment?.data?._id;
     const assignmentInfo = { isPending: true, obtainMark: 0, feedback: "" };
     const submitAssignmentInfo = {
       assignmentLink,

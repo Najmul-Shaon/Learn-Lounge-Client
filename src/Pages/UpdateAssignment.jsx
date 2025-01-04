@@ -5,13 +5,16 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const UpdateAssignment = () => {
   const assignment = useLoaderData();
 
+  console.log(assignment);
+
   const navigation = useNavigate();
   const { user } = useContext(AuthContext);
-  const [type, setType] = useState(assignment?.type || "Easy");
+  const [type, setType] = useState(assignment?.data?.type || "Easy");
   const [deadline, setDeadline] = useState(null);
 
   const [formatedDeadline, setFormatedDeadline] = useState("");
@@ -75,15 +78,22 @@ const UpdateAssignment = () => {
       userMail,
     };
 
-    fetch(`http://localhost:5000/assignment/${assignment._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updateAssignment),
-    }).then((res) =>
-      res.json().then((data) => {
-        if (data.modifiedCount > 0) {
+    // fetch(`http://localhost:5000/assignment/${assignment._id}`, {
+    //   method: "PUT",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(updateAssignment),
+    // }).then((res) =>
+    //   res.json()
+    axios
+      .put(
+        `http://localhost:5000/assignment/${assignment?.data?._id}`,
+        updateAssignment,
+        { withCredentials: true }
+      )
+      .then((res) => {
+        if (res?.data?.modifiedCount > 0) {
           Swal.fire({
             position: "center",
             icon: "success",
@@ -94,8 +104,7 @@ const UpdateAssignment = () => {
         }
         e.target.reset();
         navigation("/assignments");
-      })
-    );
+      });
   };
 
   return (
@@ -103,7 +112,7 @@ const UpdateAssignment = () => {
       <div className="hero-content flex-col">
         <div className="text-center">
           <h1 className="text-5xl font-bold">
-            Update Assignment of {assignment.title}
+            Update Assignment of {assignment?.data?.title}
           </h1>
         </div>
         <div className="card shrink-0 shadow-2xl w-full">
@@ -115,7 +124,7 @@ const UpdateAssignment = () => {
               <input
                 type="text"
                 name="title"
-                defaultValue={assignment.title}
+                defaultValue={assignment?.data?.title}
                 placeholder="Enter your assignment title here"
                 className="input input-bordered"
                 required
@@ -131,7 +140,7 @@ const UpdateAssignment = () => {
               <input
                 type="url"
                 name="phoroUrl"
-                defaultValue={assignment.phoroUrl}
+                defaultValue={assignment?.data?.phoroUrl}
                 placeholder="Enter your thumbnail image url here"
                 className="input input-bordered"
                 required
@@ -146,7 +155,7 @@ const UpdateAssignment = () => {
                 <input
                   type="number"
                   name="marks"
-                  defaultValue={assignment.marks}
+                  defaultValue={assignment?.data?.marks}
                   placeholder="Assignment total marks"
                   className="input input-bordered"
                   required
@@ -179,7 +188,7 @@ const UpdateAssignment = () => {
                 <DatePicker
                   className="input input-bordered"
                   selected={deadline}
-                  defaultValue={assignment.formatedDeadline}
+                  defaultValue={assignment?.data?.formatedDeadline}
                   onChange={(date) => formatDate(date)}
                   placeholderText="Select deadline"
                   required
@@ -201,7 +210,7 @@ const UpdateAssignment = () => {
                 <textarea
                   className="textarea textarea-bordered w-full"
                   name="description"
-                  defaultValue={assignment.description}
+                  defaultValue={assignment?.data?.description}
                   placeholder="Description here"
                   maxLength={maxCharacter}
                   onChange={handleTextChange}
