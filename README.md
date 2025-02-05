@@ -1,4 +1,3 @@
-
 # 📚 Learn Lounge
 
 **An open platform for students worldwide to collaborate, study in groups, and evaluate assignments together.**
@@ -12,7 +11,7 @@ Learn Lounge is a global platform that allows students to engage in group studie
 - 🌍 Open to students worldwide
 - 👥 Group study and collaboration
 - 📝 Assignment creation and peer evaluation
-- 🔥 Real-time notifications and updates
+- 🔥 Real-time updates
 - 🎨 Modern UI with **Tailwind CSS** and **DaisyUI**
 - 🚀 Fast performance powered by **Vite** and **Firebase**
 
@@ -31,8 +30,8 @@ To set up the project locally, follow these steps:
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/learn-lounge.git
-   cd learn-lounge
+   git clone https://github.com/Najmul-Shaon/Learn-Lounge-Client.git
+   cd Learn-Lounge-Client
    ```
 2. Install dependencies:
    ```sh
@@ -46,7 +45,7 @@ To set up the project locally, follow these steps:
 
 ## 🔑 Environment Variables
 
-Create a `.env` file in the project root and add the following variables:
+Create a `.env.local` file in the project root and add the following variables:
 
 ```env
 VITE_apiKey=AIzaSyD8lK_s02vE9S70qnDMreiiZ5zIU-O3f5g
@@ -57,14 +56,12 @@ VITE_messagingSenderId=16659888029
 VITE_appId=1:16659888029:web:cae8ef468156c909052174
 ```
 
-⚠️ **Important:** Avoid exposing Firebase API keys in public repositories. Consider using environment variables securely with tools like **dotenv**.
-
 ## 🚀 Usage
 
 - **Create Study Groups**: Collaborate with peers on assignments.
 - **Submit Assignments**: Share work and receive peer feedback.
 - **Evaluate Assignments**: Peer-review submissions for interactive learning.
-- **Real-Time Updates**: Stay updated with notifications.
+- **Real-Time Updates**: Stay updated.
 
 ## 📦 Dependencies
 
@@ -112,19 +109,5 @@ The project uses the following technologies:
   "vite": "^6.0.5"
 }
 ```
-
-## 🛠 Development
-
-To contribute:
-
-1. Fork the repository
-2. Create a new branch (`feature-branch`)
-3. Make your changes
-4. Commit and push (`git commit -m "Added new feature"`)
-5. Open a pull request
-
-## 📜 License
-
-This project is licensed under the **MIT License**.
 
 ---
