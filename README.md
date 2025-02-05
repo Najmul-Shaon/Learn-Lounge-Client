@@ -28,6 +28,13 @@ Learn Lounge is a global platform that allows students to engage in group studie
 - 🎨 Modern UI with **Tailwind CSS** and **DaisyUI**
 - 🚀 Fast performance powered by **Vite** and **Firebase**
 
+## 🚀 Usage
+
+- **Create Study Groups**: Collaborate with peers on assignments.
+- **Submit Assignments**: Share work and receive peer feedback.
+- **Evaluate Assignments**: Peer-review submissions for interactive learning.
+- **Real-Time Updates**: Stay updated.
+
 ## 🎨 Tech Stack
 
 <h4 align="left">Frontend</h4>
@@ -103,13 +110,6 @@ VITE_storageBucket=learn--lounge.firebasestorage.app
 VITE_messagingSenderId=16659888029
 VITE_appId=1:16659888029:web:cae8ef468156c909052174
 ```
-
-## 🚀 Usage
-
-- **Create Study Groups**: Collaborate with peers on assignments.
-- **Submit Assignments**: Share work and receive peer feedback.
-- **Evaluate Assignments**: Peer-review submissions for interactive learning.
-- **Real-Time Updates**: Stay updated.
 
 ## 📦 Dependencies
 
