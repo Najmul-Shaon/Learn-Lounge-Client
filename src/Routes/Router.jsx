@@ -74,12 +74,16 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
 
+        // loader: ({ params }) =>
+        //   axios.get(
+        //     `https://learn-lounge-server.vercel.app/assignment/${params.id}`,
+        //     {
+        //       withCredentials: true,
+        //     }
+        //   ),
         loader: ({ params }) =>
-          axios.get(
-            `https://learn-lounge-server.vercel.app/assignment/${params.id}`,
-            {
-              withCredentials: true,
-            }
+          fetch(
+            `https://learn-lounge-server.vercel.app/assignment/${params.id}`
           ),
       },
       {

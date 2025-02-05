@@ -41,11 +41,13 @@ const NavBar = () => {
           Assignments
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/pendingAssignments" className="font-semibold text-base">
-          Pending Assignments
-        </NavLink>
-      </li>
+      {user && (
+        <li>
+          <NavLink to="/pendingAssignments" className="font-semibold text-base">
+            Pending Assignments
+          </NavLink>
+        </li>
+      )}
     </>
   );
   return (
