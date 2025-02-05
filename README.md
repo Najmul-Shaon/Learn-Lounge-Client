@@ -4,7 +4,20 @@
 
 ## 📝 Introduction
 
-Learn Lounge is a global platform that allows students to engage in group studies, create assignments, and evaluate each other's work. The platform encourages peer learning and knowledge sharing among students, ensuring an interactive and productive educational experience.
+Learn Lounge is a global platform that allows students to engage in group studies, create assignments, and evaluate each other's work. The platform encourages peer learning and knowledge sharing among students, ensuring an interactive and productive educational experience. [View](https://learn--lounge.web.app)
+
+## 📂 Table of Contents
+
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Installation](#-installation)
+- [Environment Variables](#-environment-variables)
+- [Usage](#-usage)
+- [Dependencies](#-dependencies)
+- [Development](#-development)
+- [License](#-license)
+
+---
 
 ## 📌 Features
 
@@ -15,14 +28,49 @@ Learn Lounge is a global platform that allows students to engage in group studie
 - 🎨 Modern UI with **Tailwind CSS** and **DaisyUI**
 - 🚀 Fast performance powered by **Vite** and **Firebase**
 
-## 📂 Table of Contents
+## 🎨 Tech Stack
 
-- [Installation](#-installation)
-- [Environment Variables](#-environment-variables)
-- [Usage](#-usage)
-- [Dependencies](#-dependencies)
-- [Development](#-development)
-- [License](#-license)
+<h4 align="left">Frontend</h4>
+
+<div align="left">
+  <img src="https://skillicons.dev/icons?i=html" height="40" alt="html5 logo"  />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=css" height="40" alt="css3 logo"  />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=tailwind" height="40" alt="tailwindcss logo"  />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=js" height="40" alt="javascript logo"  />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=react" height="40" alt="react logo"  />
+  <img width="12" />
+</div>
+
+<h4 align="left">Backend</h4>
+
+<div align="left">
+
+  <img src="https://skillicons.dev/icons?i=nodejs" height="40" alt="nodejs logo"  />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=express" height="40" alt="express logo"  />
+  <img width="12" />
+  
+</div>
+<h4 align="left">Database</h4>
+
+<div align="left">
+
+  <img src="https://skillicons.dev/icons?i=mongodb" height="40" alt="mongodb logo"  />
+  
+</div>
+<h4 align="left">Authentication</h4>
+
+<div align="left">
+  <img src="https://skillicons.dev/icons?i=firebase" height="40" alt="firebase logo"  />
+  <img width="12" />
+ <img src="https://img.shields.io/badge/JWT-JSON%20Web%20Token-blue" alt="JWT" height="40" />
+</div>
+
+---
 
 ## 🔧 Installation
 
