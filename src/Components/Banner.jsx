@@ -1,6 +1,7 @@
-import { easeOut, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import team1 from "../assets/team1.jpg";
+import team2 from "../assets/images/l2.avif";
+import team1 from "../assets/images/l3.avif";
 
 const Banner = () => {
   return (
@@ -14,7 +15,7 @@ const Banner = () => {
             className="max-w-sm w-64 rounded-t-[40px] rounded-br-[40px] border-l-4 border-b-4 border-blue-400 shadow-2xl"
           />
           <motion.img
-            src={team1}
+            src={team2}
             animate={{ x: [100, 150, 100] }}
             transition={{ duration: 10, delay: 5, repeat: Infinity }}
             className="max-w-sm w-64 rounded-t-[40px] rounded-br-[40px] border-l-4 border-b-4 border-blue-400 shadow-2xl"
