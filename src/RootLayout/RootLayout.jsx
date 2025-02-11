@@ -9,7 +9,7 @@ const RootLayout = () => {
     <>
       <Toaster></Toaster>
       <Tooltip id="my-tooltip" />
-      <header className="container mx-auto font-lato">
+      <header className="font-lato">
         <nav className="">
           <NavBar></NavBar>
         </nav>
