@@ -91,7 +91,7 @@ const SignUp = () => {
           creationTime,
           lastSignInTime,
         };
-        fetch("https://learn-lounge-server.vercel.app/users", {
+        fetch("http://localhost:5000/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

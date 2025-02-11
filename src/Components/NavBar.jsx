@@ -19,7 +19,8 @@ const NavBar = () => {
 
   useEffect(() => {
     axios
-      .get(`https://learn-lounge-server.vercel.app/user?email=${user?.email}`)
+      // .get(`http://localhost:5000/user?email=${user?.email}`)
+      .get(`http://localhost:5000/user?email=${user?.email}`)
       .then((res) => {
         setImg(res.data);
       });

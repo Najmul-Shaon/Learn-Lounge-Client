@@ -19,22 +19,20 @@ const Assignments = () => {
 
   useEffect(() => {
     axios
-      .get(`https://learn-lounge-server.vercel.app/assignments?filter=${type}`)
+      .get(`http://localhost:5000/assignments?filter=${type}`)
       .then((res) => setAllAssignments(res.data));
   }, [type]);
 
   const handleSearch = () => {
     axios
-      .get(
-        `https://learn-lounge-server.vercel.app/assignments?search=${search}`
-      )
+      .get(`http://localhost:5000/assignments?search=${search}`)
       .then((res) => setAllAssignments(res.data));
     setSearch("");
   };
 
   const handleUpdate = (id) => {
     axios
-      .get(`https://learn-lounge-server.vercel.app/assignment/${id}`, {
+      .get(`http://localhost:5000/assignment/${id}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -51,10 +49,10 @@ const Assignments = () => {
 
   // while click on delete button
   const handleDelete = (id) => {
-    // fetch(`https://learn-lounge-server.vercel.app/assignment/${id}`)
+    // fetch(`http://localhost:5000/assignment/${id}`)
     //   .then((res) => res.json())
     axios
-      .get(`https://learn-lounge-server.vercel.app/assignment/${id}`, {
+      .get(`http://localhost:5000/assignment/${id}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -69,17 +67,14 @@ const Assignments = () => {
             confirmButtonText: "Yes, delete it!",
           }).then((result) => {
             if (result.isConfirmed) {
-              // fetch(`https://learn-lounge-server.vercel.app/assignment/${id}`, {
+              // fetch(`http://localhost:5000/assignment/${id}`, {
               //   method: "delete",
               // })
               //   .then((res) => res.json())
               axios
-                .delete(
-                  `https://learn-lounge-server.vercel.app/assignment/${id}`,
-                  {
-                    withCredentials: true,
-                  }
-                )
+                .delete(`http://localhost:5000/assignment/${id}`, {
+                  withCredentials: true,
+                })
                 .then((res) => {
                   if (res?.data?.deletedCount > 0) {
                     Swal.fire({

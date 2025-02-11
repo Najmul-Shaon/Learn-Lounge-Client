@@ -41,7 +41,7 @@ const PendingAssignment = () => {
     const feedback = form.get("feedback");
     const marksInfo = { obtainMark, feedback, isPending: false };
 
-    fetch(`https://learn-lounge-server.vercel.app/assignment/update/${id}`, {
+    fetch(`http://localhost:5000/assignment/update/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

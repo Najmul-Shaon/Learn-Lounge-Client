@@ -27,7 +27,7 @@ const SubmitAssignment = () => {
       assignmentId,
       assignmentInfo,
     };
-    fetch("https://learn-lounge-server.vercel.app/assignment/submit", {
+    fetch("http://localhost:5000/assignment/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
