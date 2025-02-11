@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 const NavBar = () => {
   // load from auth provider
@@ -30,29 +31,65 @@ const NavBar = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/" className="font-semibold text-base">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `font-semibold text-base hover:text-primary ${
+              isActive ? "text-primary" : "text-black"
+            } focus:outline-none`
+          }
+        >
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink to="/assignments" className="font-semibold text-base">
+        <NavLink
+          to="/assignments"
+          className={({ isActive }) =>
+            `font-semibold text-base hover:text-primary ${
+              isActive ? "text-primary" : "text-black"
+            } focus:outline-none`
+          }
+        >
           Assignments
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/about" className="font-semibold text-base">
-          About
-        </NavLink>
-      </li>
+
       {user && (
         <li>
-          <NavLink to="/pendingAssignments" className="font-semibold text-base">
+          <NavLink
+            to="/pendingAssignments"
+            className={({ isActive }) =>
+              `font-semibold text-base hover:text-primary ${
+                isActive ? "text-primary" : "text-black"
+              } focus:outline-none`
+            }
+          >
             Pending Assignments
           </NavLink>
         </li>
       )}
+      <li>
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            `font-semibold text-base hover:text-primary ${
+              isActive ? "text-primary" : "text-black"
+            } focus:outline-none`
+          }
+        >
+          About
+        </NavLink>
+      </li>
     </>
   );
+
+  const [isMenuView, setIsMenuView] = useState(true);
+
+  const toggleMenu = () => {
+    setIsMenuView(!isMenuView);
+  };
+
   return (
     <nav className="bg-secondary shadow fixed w-full top-0 left-0 z-50">
       <div className="container mx-auto px-4">
@@ -62,22 +99,10 @@ const NavBar = () => {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost lg:hidden"
+                className="lg:hidden text-lg me-3"
+                // onClick={toggleMenu}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />
-                </svg>
+                <RxHamburgerMenu />
               </div>
               <ul
                 tabIndex={0}
@@ -93,8 +118,10 @@ const NavBar = () => {
               Learn Lounge
             </Link>
           </div>
+          {/* for large device  */}
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1 space-x-2">{links}</ul>
+            {/* <ul className="menu menu-horizontal px-1 space-x-2"> */}
+            <ul className="flex px-1 space-x-6">{links}</ul>
           </div>
           <div className="navbar-end flex gap-2">
             {/* <Link to="/login"> */}

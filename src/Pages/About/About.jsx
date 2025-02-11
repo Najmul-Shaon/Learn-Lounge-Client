@@ -4,8 +4,8 @@ import FeatureCard from "./FeatureCard";
 
 const About = () => {
   return (
-    <div className="mt-16">
-      <div className="py-8 bg-secondary px-4">
+    <div className="mt-16 bg-background">
+      <div className="pt-12 px-4">
         <SectionTitle
           header={"About The Learn Lounge"}
           subHeader={
@@ -14,11 +14,11 @@ const About = () => {
         ></SectionTitle>
       </div>
       {/* ***********************************************  */}
-      <div className="bg-background text-text container mx-auto px-4">
+      <div className="container mx-auto px-4">
         {/* Mission & Vision */}
         {/* <div className="max-w-4xl mx-auto py-16 px-6 space-y-12"> */}
-        <div className="flex flex-col md:flex-row gap-6 mt-12">
-          <div className="bg-white shadow-lg rounded-lg p-6 border-l-4 border-primary">
+        <div className="flex flex-col md:flex-row gap-6 py-16 ">
+          <div className="bg-secondary shadow-lg rounded-lg p-6 border-l-4 border-primary">
             <h2 className="text-2xl font-semibold text-primary">🎯 Mission</h2>
             <p className="mt-2 text-gray-600">
               To provide a collaborative learning platform where students can
@@ -27,7 +27,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="bg-white shadow-lg rounded-lg p-6 border-l-4 border-primary">
+          <div className="bg-secondary shadow-lg rounded-lg p-6 border-l-4 border-primary">
             <h2 className="text-2xl font-semibold text-primary">🚀 Vision</h2>
             <p className="mt-2 text-gray-600">
               To become the leading global platform for student-led education,
@@ -38,8 +38,8 @@ const About = () => {
         </div>
 
         {/* Key Features */}
-        <div className="bg-gray-100 py-16 px-6">
-          <div className="max-w-5xl mx-auto text-center">
+        <div className="py-16 px-6">
+          <div className="text-center">
             <h2 className="text-3xl font-bold text-primary">✨ Key Features</h2>
             <div className="grid md:grid-cols-3 gap-8 mt-8">
               <FeatureCard

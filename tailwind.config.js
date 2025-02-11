@@ -12,6 +12,7 @@ export default {
         secondary: "#F5F5DC",
         accent: "#FFD700",
         text: "#111827",
+        background: "#f1f5f9",
       },
     },
   },
