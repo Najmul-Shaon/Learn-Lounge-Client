@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import bannerImg from "../assets/ConnectedWorld.gif";
+import bannerImg from "../assets/ConnectedWorldV2.gif";
 
 const Banner = () => {
   return (

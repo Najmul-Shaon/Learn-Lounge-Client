@@ -3,6 +3,8 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { ImExit } from "react-icons/im";
+import { Tooltip } from "react-tooltip";
 
 const NavBar = () => {
   // load from auth provider
@@ -134,31 +136,31 @@ const NavBar = () => {
                   <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="m-1">
                       <div className="avatar">
-                        <div className="w-12 rounded-full">
+                        <div className="w-6 rounded-full">
                           <img src={user?.photoURL || userImg[0]?.photo} />
                         </div>
                       </div>
                     </div>
                     <div
                       tabIndex={0}
-                      className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow space-y-2"
+                      className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow-lg space-y-2"
                     >
-                      <button className="btn">
+                      <p>
                         <Link
                           to={"/createAssignment"}
                           className="font-semibold text-base"
                         >
                           Create Assignment
                         </Link>
-                      </button>
-                      <button className="btn">
+                      </p>
+                      <p>
                         <Link
                           to="/myAssignment"
                           className="font-semibold text-base"
                         >
                           My Assignment
                         </Link>
-                      </button>
+                      </p>
                     </div>
                   </div>
 
@@ -167,19 +169,23 @@ const NavBar = () => {
                     <p>{user?.displayName || userImg[0]?.name}</p>
                   </div>
                 </div>
-                <button onClick={logOut} className="btn">
-                  Log Out
-                </button>
+
+                <ImExit
+                  onClick={logOut}
+                  className="text-xl"
+                  data-tooltip-id="logOut"
+                  data-tooltip-content="Log Out"
+                ></ImExit>
               </div>
             ) : (
-              <Link to="/login" className="btn">
+              <Link to="/login" className="btn btn-sm bg-primary text-white hover:bg-primary">
                 Login
               </Link>
             )}
             {user && user.email ? (
               ""
             ) : (
-              <Link to="/signup" className="btn">
+              <Link to="/signup" className="btn btn-sm btn-outline border-primary hover:bg-primary">
                 Register
               </Link>
             )}
@@ -217,6 +223,7 @@ const NavBar = () => {
           </div>
         </div>
       </div>
+      <Tooltip id="logOut"></Tooltip>
     </nav>
   );
 };

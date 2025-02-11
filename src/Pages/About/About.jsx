@@ -17,28 +17,40 @@ const About = () => {
       <div className="container mx-auto px-4">
         {/* Mission & Vision */}
         {/* <div className="max-w-4xl mx-auto py-16 px-6 space-y-12"> */}
-        <div className="flex flex-col md:flex-row gap-6 py-16 ">
-          <div className="bg-secondary shadow-lg rounded-lg p-6 border-l-4 border-primary">
+        <div className="flex flex-col md:flex-row gap-6 py-16">
+          <div className="bg-secondary/20 shadow-lg rounded-lg p-6 border-l-4 border-primary">
             <h2 className="text-2xl font-semibold text-primary">🎯 Mission</h2>
             <p className="mt-2 text-gray-600">
-              To provide a collaborative learning platform where students can
-              engage in peer-driven education, share knowledge, and enhance
-              learning through interactive assignments and evaluations.
+              Our mission is to revolutionize student learning by fostering a
+              collaborative, interactive, and peer-driven educational
+              environment. Learn Lounge empowers students to create, submit, and
+              evaluate assignments, promoting deeper engagement and critical
+              thinking. By enabling real-time feedback, knowledge sharing, and
+              teamwork, we aim to enhance academic growth and encourage
+              self-improvement. We strive to make learning more inclusive,
+              accessible, and globally connected, ensuring students from all
+              backgrounds have the tools to succeed.
             </p>
           </div>
 
-          <div className="bg-secondary shadow-lg rounded-lg p-6 border-l-4 border-primary">
+          <div className="bg-secondary/20 shadow-lg rounded-lg p-6 border-l-4 border-primary">
             <h2 className="text-2xl font-semibold text-primary">🚀 Vision</h2>
             <p className="mt-2 text-gray-600">
-              To become the leading global platform for student-led education,
-              where learning is interactive, accessible, and driven by peer
-              collaboration beyond traditional classrooms.
+              We envision a future where education transcends traditional
+              boundaries and becomes a truly collaborative and student-driven
+              experience. Learn Lounge aspires to be the leading global platform
+              where students learn, teach, and grow together, shaping a
+              generation of independent thinkers and problem solvers. By
+              leveraging technology, peer assessments, and community-driven
+              learning, we aim to create a space where every student can enhance
+              their skills, build confidence, and thrive in an interconnected
+              world.
             </p>
           </div>
         </div>
 
         {/* Key Features */}
-        <div className="py-16 px-6">
+        <div className="py-16">
           <div className="text-center">
             <h2 className="text-3xl font-bold text-primary">✨ Key Features</h2>
             <div className="grid md:grid-cols-3 gap-8 mt-8">
