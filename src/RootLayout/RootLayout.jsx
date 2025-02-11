@@ -14,7 +14,7 @@ const RootLayout = () => {
           <NavBar></NavBar>
         </nav>
       </header>
-      <main className="min-h-[calc(100vh-392px)] font-lato">
+      <main className="min-h-[calc(100vh-285px)] font-lato">
         <Outlet></Outlet>
       </main>
       <footer className="font-lato">

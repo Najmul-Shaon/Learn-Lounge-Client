@@ -22,7 +22,7 @@ const Banner = () => {
             lack of motivation.
           </p>
           <Link to={"/assignments"}>
-            <button className="btn primary-btn shadow-lg shadow-primary text-lg font-semibold">
+            <button className="btn primary-btn shadow-lg shadow-primary font-semibold">
               Stay Together Now
             </button>
           </Link>

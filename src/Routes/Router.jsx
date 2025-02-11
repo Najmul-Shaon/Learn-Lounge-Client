@@ -13,6 +13,7 @@ import SubmitAssignment from "../Pages/SubmitAssignment";
 import MySubmitted from "../Pages/MySubmitted";
 import PendingAssignment from "../Pages/PendingAssignment";
 import axios from "axios";
+import About from "../Pages/About/About";
 
 const Router = createBrowserRouter([
   {
@@ -38,6 +39,11 @@ const Router = createBrowserRouter([
         path: "/assignments",
         element: <Assignments></Assignments>,
         loader: () => fetch("http://localhost:5000/assignments"),
+      },
+
+      {
+        path: "/about",
+        element: <About></About>,
       },
 
       {

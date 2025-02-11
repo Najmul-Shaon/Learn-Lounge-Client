@@ -39,6 +39,11 @@ const NavBar = () => {
           Assignments
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/about" className="font-semibold text-base">
+          About
+        </NavLink>
+      </li>
       {user && (
         <li>
           <NavLink to="/pendingAssignments" className="font-semibold text-base">
@@ -81,7 +86,10 @@ const NavBar = () => {
                 {links}
               </ul>
             </div>
-            <Link to="/" className="text-lg md:text-xl lg:text-3xl text-primary font-pacifico">
+            <Link
+              to="/"
+              className="text-lg md:text-xl lg:text-3xl text-primary font-pacifico"
+            >
               Learn Lounge
             </Link>
           </div>
