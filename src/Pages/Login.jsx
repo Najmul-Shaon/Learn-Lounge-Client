@@ -6,6 +6,7 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa6";
+import googleImg from "../assets/google.png";
 
 const Login = () => {
   const emailRef = useRef();
@@ -53,78 +54,80 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <div className="hero bg-base-200 min-h-screen mt-24 p-8">
-        <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl">
-          
-          <form onSubmit={handleSubmit} className="card-body">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="email"
-                name="email"
-                placeholder="email"
-                className="input input-bordered"
-                required
-              />
-             
-            </div>
-            <div className="form-control relative">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input
-                type={showPass ? "text" : "password"}
-                name="password"
-                placeholder="password"
-                className="input input-bordered"
-                required
-              />
+    <div className="bg-background mt-16 px-4">
+      <div className="">
+        <div className="py-16 flex justify-center">
+          <div className="bg-secondary w-full max-w-lg shrink-0 shadow-lg rounded-lg">
+            <h3 className="text-center text-3xl font-bold text-primary pt-4">
+              Login Now
+            </h3>
+           
+              <form onSubmit={handleSubmit} className="px-16 py-2">
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Email</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="email"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control relative">
+                  <label className="label">
+                    <span className="label-text">Password</span>
+                  </label>
+                  <input
+                    type={showPass ? "text" : "password"}
+                    name="password"
+                    placeholder="password"
+                    className="input input-bordered"
+                    required
+                  />
+                  <button
+                    onClick={() => {
+                      setShowPass(!showPass);
+                    }}
+                    className="absolute right-6 top-12"
+                  >
+                    {showPass ? (
+                      <FaEyeSlash></FaEyeSlash>
+                    ) : (
+                      <MdOutlineRemoveRedEye></MdOutlineRemoveRedEye>
+                    )}
+                  </button>
+                  <label className="label">
+                    <Link className="label-text-alt link link-hover">
+                      Forgot password?
+                    </Link>
+                  </label>
+                </div>
+                <div className="form-control">
+                  <button className="btn text-lg text-white primary-btn shadow-lg shadow-primary hover:bg-primary">
+                    Login
+                  </button>
+                </div>
+                <p className="mt-4">
+                  New here?
+                  <Link to="/signup" className="text-primary mx-2">
+                    Sign Up
+                  </Link>
+                </p>
+              </form>
+         
+            <div className="divider">OR</div>
+
+            <div className="flex flex-col items-center pb-4 space-y-4">
               <button
-                onClick={() => {
-                  setShowPass(!showPass);
-                }}
-                className="absolute right-6 top-12"
+                onClick={logInWithGoogle}
+                className="btn btn-outline text-text border-primary hover:bg-background hover:text-text"
               >
-                {showPass ? (
-                  <FaEyeSlash></FaEyeSlash>
-                ) : (
-                  <MdOutlineRemoveRedEye></MdOutlineRemoveRedEye>
-                )}
-              </button>
-              <label className="label">
-                <Link className="label-text-alt link link-hover">
-                  Forgot password?
-                </Link>
-              </label>
-            </div>
-            <div className="form-control mt-6">
-              <button className="btn text-lg text-white bg-orange-400 hover:bg-orange-300">
-                Login
+                <img className="w-4" src={googleImg} alt="" />
+                Continue with Google
               </button>
             </div>
-            <p>
-              New here?
-              <Link to="/signup" className="text-green-400 mx-2">
-                Sign Up
-              </Link>
-            </p>
-          </form>
-          <div className="flex justify-center">
-            <p className="text-2xl text-green-400">or</p>
-          </div>
-          <div className="flex flex-col items-center pb-4 space-y-4">
-            <h2 className="text-2xl font-bold text-center mt-4 text-orange-400">
-              Login with Google
-            </h2>
-            <button
-              onClick={logInWithGoogle}
-              className="btn text-2xl text-[#4285F4]"
-            >
-              <FaGoogle></FaGoogle>
-            </button>
           </div>
         </div>
       </div>
