@@ -15,7 +15,12 @@ const Features = () => {
     <div className="my-24 bg-background">
       <div className="py-16 container mx-auto px-4">
         <div className="pb-12">
-          <SectionTitle header={"Community Insights"}></SectionTitle>
+          <SectionTitle
+            header={" 🤝 Community Insights"}
+            subHeader={
+              "Gain valuable insights from the global student community. Learn, share, and grow together."
+            }
+          ></SectionTitle>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -12,9 +12,14 @@ const StudyCard = () => {
   }, []);
   return (
     <div className="my-24 space-y-6">
-      <div>
+      <div className="container mx-auto px-4">
         <div className="pt-12">
-          <SectionTitle header={"Discover Study Together"}></SectionTitle>
+          <SectionTitle
+            header={"📚 Discover Study Together"}
+            subHeader={
+              "Streamline your assignments with our collaborative platform and receive insightful peer evaluations."
+            }
+          ></SectionTitle>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {allAssignments.map((assignment) => (

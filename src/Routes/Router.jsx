@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import ErrorPage from "../Pages/ErrorPage";
 import RootLayout from "../RootLayout/RootLayout";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
@@ -14,12 +13,13 @@ import axios from "axios";
 import About from "../Pages/About/About";
 import Assignments from "../Pages/Assignments/Assignments";
 import AssignmentDetails from "../Pages/Assignments/AssignmentDetails";
+import ErrorPage from "../Pages/errorPage/ErrorPage";
 
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout></RootLayout>,
-    errorElement: <ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
