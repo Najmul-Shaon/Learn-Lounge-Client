@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AssignmentCard from "../Pages/Assignments/AssignmentCard";
 import axios from "axios";
 import SectionTitle from "./SectionTitle/SectionTitle";
+import { Link } from "react-router-dom";
 
 const StudyCard = () => {
   const [allAssignments, setAllAssignments] = useState([]);
@@ -21,7 +22,7 @@ const StudyCard = () => {
             }
           ></SectionTitle>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {allAssignments.map((assignment) => (
             <AssignmentCard
               assignment={assignment}
@@ -31,9 +32,11 @@ const StudyCard = () => {
         </div>
       </div>
       <div className="flex justify-center py-8">
-        <button className="primary-btn btn shadow-lg shadow-primary">
-          Explore All
-        </button>
+        <Link to="/assignments">
+          <button className="primary-btn btn shadow-lg shadow-primary">
+            Explore All
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -24,26 +24,26 @@ const Features = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="p-6 text-center bg-secondary rounded-lg">
-            <p className="text-4xl font-bold mb-2">
+          <div className="p-6 text-center bg-secondary rounded-lg shadow-lg transition hover:shadow-xl hover:shadow-primary/30">
+            <p className="text-4xl font-bold mb-2 text-accent">
               <CountUp end={stats?.assignmentCount}></CountUp>
             </p>
             <h3 className="text-xl uppercase">Assignments</h3>
           </div>
-          <div className="p-6 text-center bg-secondary rounded-lg">
-            <p className="text-4xl font-bold mb-2">
+          <div className="p-6 text-center bg-secondary rounded-lg shadow-lg transition hover:shadow-xl hover:shadow-primary/30">
+            <p className="text-4xl font-bold mb-2 text-accent">
               <CountUp end={stats?.submittedCount}></CountUp>
             </p>
             <h3 className="text-xl uppercase">Submitted</h3>
           </div>
-          <div className="p-6 text-center bg-secondary rounded-lg">
-            <p className="text-4xl font-bold mb-2">
+          <div className="p-6 text-center bg-secondary rounded-lg shadow-lg transition hover:shadow-xl hover:shadow-primary/30">
+            <p className="text-4xl font-bold mb-2 text-accent">
               <CountUp end={stats?.pendingCount} />
             </p>
             <h3 className="text-xl uppercase">Pending</h3>
           </div>
-          <div className="p-6 text-center bg-secondary rounded-lg">
-            <p className="text-4xl font-bold mb-2">
+          <div className="p-6 text-center bg-secondary rounded-lg shadow-lg transition hover:shadow-xl hover:shadow-primary/30">
+            <p className="text-4xl font-bold mb-2 text-accent">
               <CountUp end={stats?.usersCount} />
             </p>
             <h3 className="text-xl uppercase">Acitve Users</h3>
