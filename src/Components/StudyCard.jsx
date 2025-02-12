@@ -1,61 +1,30 @@
+import { useEffect, useState } from "react";
+import AssignmentCard from "../Pages/Assignments/AssignmentCard";
+import axios from "axios";
+import SectionTitle from "./SectionTitle/SectionTitle";
+
 const StudyCard = () => {
+  const [allAssignments, setAllAssignments] = useState([]);
+  useEffect(() => {
+    axios.get(`http://localhost:5000/assignments?max=8`).then((res) => {
+      setAllAssignments(res?.data);
+      console.log(res.data);
+    });
+  }, []);
   return (
     <div className="my-24 space-y-6">
-      <h3 className="text-3xl font-bold text-center">
-        Discover Study Together
-      </h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* card 01  */}
-        <div className="border rounded-xl p-6">
-          <figure className="w-full">
-            <img
-              className="w-64"
-              src="https://i.ibb.co.com/7kj75Dq/12085329-20944157.jpg"
-              alt="Study"
-            />
-          </figure>
-          <div className="flex items-center justify-center flex-col">
-            <h4 className="text-2xl font-bold">Own Study Universe</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-              eligendi consequuntur quis ea fugiat quibusdam.
-            </p>
-          </div>
+      <div>
+        <div className="pt-12">
+          <SectionTitle header={"Discover Study Together"}></SectionTitle>
         </div>
-        {/* card 02  */}
-        <div className="border rounded-xl p-6">
-          <figure className="w-full">
-            <img
-              className="w-64"
-              src="https://i.ibb.co.com/7kj75Dq/12085329-20944157.jpg"
-              alt="Study"
-            />
-          </figure>
-          <div className="flex items-center justify-center flex-col">
-            <h4 className="text-2xl font-bold">Own Study Universe</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-              eligendi consequuntur quis ea fugiat quibusdam.
-            </p>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {allAssignments.map((assignment) => (
+            <AssignmentCard assignment={assignment}></AssignmentCard>
+          ))}
         </div>
-        {/* card 03 */}
-        <div className="border rounded-xl p-6">
-          <figure className="w-full">
-            <img
-              className="w-64"
-              src="https://i.ibb.co.com/7kj75Dq/12085329-20944157.jpg"
-              alt="Study"
-            />
-          </figure>
-          <div className="flex items-center justify-center flex-col">
-            <h4 className="text-2xl font-bold">Own Study Universe</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-              eligendi consequuntur quis ea fugiat quibusdam.
-            </p>
-          </div>
-        </div>
+      </div>
+      <div className="flex justify-center py-8">
+        <button className="primary-btn btn shadow-lg shadow-primary">Explore All</button>
       </div>
     </div>
   );

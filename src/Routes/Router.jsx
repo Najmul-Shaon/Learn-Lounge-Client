@@ -6,14 +6,14 @@ import SignUp from "../Pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Home from "../Pages/Home";
 import CreateAssignment from "../Pages/CreateAssignment";
-import Assignments from "../Pages/Assignments";
 import UpdateAssignment from "../Pages/UpdateAssignment";
-import AssignmentDetails from "../Pages/AssignmentDetails";
 import SubmitAssignment from "../Pages/SubmitAssignment";
 import MySubmitted from "../Pages/MySubmitted";
 import PendingAssignment from "../Pages/PendingAssignment";
 import axios from "axios";
 import About from "../Pages/About/About";
+import Assignments from "../Pages/Assignments/Assignments";
+import AssignmentDetails from "../Pages/Assignments/AssignmentDetails";
 
 const Router = createBrowserRouter([
   {

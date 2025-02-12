@@ -1,12 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { GrUpdate } from "react-icons/gr";
-import { MdDelete } from "react-icons/md";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "../Provider/AuthProvider";
+import { AuthContext } from "../../Provider/AuthProvider";
 import { IoSearchSharp } from "react-icons/io5";
 import axios from "axios";
-import SectionTitle from "../Components/SectionTitle/SectionTitle";
+import SectionTitle from "../../Components/SectionTitle/SectionTitle";
+import AssignmentCard from "./AssignmentCard";
 
 const Assignments = () => {
   // load all assignments data from backend api
@@ -146,37 +145,10 @@ const Assignments = () => {
             ""
           )}
           {allAssignments.map((assignment) => (
-            <div className="card bg-secondary shadow-xl" key={assignment._id}>
-              <div className="absolute bg-accent top-5 p-1 rounded-s-lg right-0">
-                <p className="text-text">{assignment.type}</p>
-              </div>
-              <figure className="">
-                <img
-                  className="rounded-t-lg"
-                  src={assignment.phoroUrl}
-                  alt="Assignment Image"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">{assignment.title}</h2>
-                <p>{assignment.description}</p>
-                <div className="card-actions justify-end">
-                  <div className="badge badge-outline">
-                    {assignment.marks} Marks
-                  </div>
-                  <div className="badge badge-outline">
-                    {assignment.deadline || assignment.formatedDeadline}
-                  </div>
-                </div>
-                <div className="">
-                  <Link to={`/assignment/details/${assignment._id}`}>
-                    <button className="btn primary-btn font-bold w-full mt-2">
-                      View Details
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <AssignmentCard
+              key={assignment._id}
+              assignment={assignment}
+            ></AssignmentCard>
           ))}
         </div>
         {/* ******************************************** */}
