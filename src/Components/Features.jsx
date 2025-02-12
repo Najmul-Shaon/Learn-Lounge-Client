@@ -7,12 +7,9 @@ import CountUp from "react-countup";
 
 const Features = () => {
   const [stats, setStats] = useState({});
-  console.log(stats);
   useEffect(() => {
     axios
-      .get(
-        "https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/stats"
-      )
+      .get("https://learn-lounge-server.vercel.app/stats")
       .then((res) => setStats(res.data));
   }, []);
   return (

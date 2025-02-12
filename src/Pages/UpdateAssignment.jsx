@@ -75,7 +75,7 @@ const UpdateAssignment = () => {
       userMail,
     };
 
-    // fetch(`https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignment/${assignment._id}`, {
+    // fetch(`https://learn-lounge-server.vercel.app/assignment/${assignment._id}`, {
     //   method: "PUT",
     //   headers: {
     //     "Content-Type": "application/json",
@@ -85,7 +85,7 @@ const UpdateAssignment = () => {
     //   res.json()
     axios
       .put(
-        `https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignment/${assignment?.data?._id}`,
+        `https://learn-lounge-server.vercel.app/assignment/${assignment?.data?._id}`,
         updateAssignment,
         { withCredentials: true }
       )

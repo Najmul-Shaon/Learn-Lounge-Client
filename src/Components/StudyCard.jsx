@@ -8,9 +8,7 @@ const StudyCard = () => {
   const [allAssignments, setAllAssignments] = useState([]);
   useEffect(() => {
     axios
-      .get(
-        `https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignments?max=8`
-      )
+      .get(`https://learn-lounge-server.vercel.app/assignments?max=8`)
       .then((res) => {
         setAllAssignments(res?.data);
       });

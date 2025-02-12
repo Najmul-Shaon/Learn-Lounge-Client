@@ -28,16 +28,13 @@ const SubmitAssignment = () => {
       assignmentId,
       assignmentInfo,
     };
-    fetch(
-      "https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignment/submit",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(submitAssignmentInfo),
-      }
-    )
+    fetch("https://learn-lounge-server.vercel.app/assignment/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(submitAssignmentInfo),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {

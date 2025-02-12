@@ -11,7 +11,7 @@ const MySubmitted = () => {
   useEffect(() => {
     axios
       .get(
-        `https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignments/submitted?email=${user.email}`,
+        `https://learn-lounge-server.vercel.app/assignments/submitted?email=${user.email}`,
         {
           withCredentials: true,
         }

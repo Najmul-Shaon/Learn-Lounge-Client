@@ -60,18 +60,14 @@ const AuthProvider = ({ children }) => {
         const user = { email: currentUser.email };
 
         axios
-          .post(
-            "https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/jwt",
-            user,
-            {
-              withCredentials: true,
-            }
-          )
+          .post("https://learn-lounge-server.vercel.app/jwt", user, {
+            withCredentials: true,
+          })
           .then((res) => setLoading(false));
       } else {
         axios
           .post(
-            "https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/logout",
+            "https://learn-lounge-server.vercel.app/logout",
             {},
             { withCredentials: true }
           )

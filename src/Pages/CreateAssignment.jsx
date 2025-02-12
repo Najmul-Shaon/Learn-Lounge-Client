@@ -10,7 +10,6 @@ import SectionTitle from "../Components/SectionTitle/SectionTitle";
 const CreateAssignment = () => {
   const navigation = useNavigate();
   const { user } = useContext(AuthContext);
-  console.log("user from create page", user);
   const [deadline, setDeadline] = useState(null);
   const [type, setType] = useState("Easy");
   const [formatedDeadline, setFormatedDeadline] = useState("");
@@ -78,7 +77,7 @@ const CreateAssignment = () => {
 
     axios
       .post(
-        "https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignments",
+        "https://learn-lounge-server.vercel.app/assignments",
         newAssignment,
         {
           withCredentials: true,

@@ -83,16 +83,13 @@ const SignUp = () => {
           creationTime,
           lastSignInTime,
         };
-        fetch(
-          "https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/users",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newUser),
-          }
-        )
+        fetch("https://learn-lounge-server.vercel.app/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        })
           .then((res) => res.json())
           .then((data) => {
             toast.success("Welcome!!");

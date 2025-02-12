@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaRegWindowClose } from "react-icons/fa";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import SectionTitle from "../Components/SectionTitle/SectionTitle";
@@ -10,35 +10,16 @@ import Loading from "../Components/Loading";
 
 const PendingAssignment = () => {
   const { user, setLoading, loading } = useContext(AuthContext);
-  // const pendingAssignments = useLoaderData();
-
-  console.log(loading);
 
   const [pendingAssignments, setPendingAssignments] = useState([]);
-  console.log(pendingAssignments);
 
   useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    setLoading(true);
     axios
-      .get(
-        "https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignments/pending",
-        {
-          withCredentials: true,
-          signal,
-        }
-      )
-      .then((res) => setPendingAssignments(res.data))
-      .catch((error) => {
-        if (error.name === "AbortError") {
-          console.log("error from catch", error);
-          return;
-        }
+      .get("https://learn-lounge-server.vercel.app/assignments/pending", {
+        withCredentials: true,
       })
-      .finally(() => setLoading(false));
-    return () => controller.abort();
-  }, [user]);
+      .then((res) => setPendingAssignments(res.data));
+  }, []);
 
   const navigate = useNavigate();
 
@@ -73,16 +54,13 @@ const PendingAssignment = () => {
     const feedback = form.get("feedback");
     const marksInfo = { obtainMark, feedback, isPending: false };
 
-    fetch(
-      `https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignment/update/${id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(marksInfo),
-      }
-    )
+    fetch(`https://learn-lounge-server.vercel.app/assignment/update/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(marksInfo),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -93,7 +71,6 @@ const PendingAssignment = () => {
   };
   return (
     <div className="mt-20">
-      {loading && pendingAssignments?.length <= 0 && <Loading></Loading>}
       <div className="py-12">
         <SectionTitle header={"Pending Assginments"}></SectionTitle>
       </div>

@@ -14,7 +14,7 @@ const Assignments = () => {
   const navigate = useNavigate();
   // get user data
   const { user, setLoading, loading } = useContext(AuthContext);
-  console.log(loading);
+
   const [type, setType] = useState("All type");
   const [search, setSearch] = useState("");
   const [allAssignments, setAllAssignments] = useState(loadedAllAssignments);
@@ -22,9 +22,7 @@ const Assignments = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(
-        `https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignments?filter=${type}`
-      )
+      .get(`https://learn-lounge-server.vercel.app/assignments?filter=${type}`)
       .then((res) => setAllAssignments(res.data))
       .catch((error) => {})
       .finally(() => setLoading(false));
@@ -33,7 +31,7 @@ const Assignments = () => {
   const handleSearch = () => {
     axios
       .get(
-        `https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignments?search=${search}`
+        `https://learn-lounge-server.vercel.app/assignments?search=${search}`
       )
       .then((res) => setAllAssignments(res.data));
     setSearch("");
