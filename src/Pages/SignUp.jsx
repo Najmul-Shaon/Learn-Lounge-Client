@@ -1,4 +1,3 @@
-
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { FaEyeSlash } from "react-icons/fa";
 import googleImg from "../assets/google.png";
@@ -84,13 +83,16 @@ const SignUp = () => {
           creationTime,
           lastSignInTime,
         };
-        fetch("http://localhost:5000/users", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newUser),
-        })
+        fetch(
+          "https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/users",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newUser),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             toast.success("Welcome!!");

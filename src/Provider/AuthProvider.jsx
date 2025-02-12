@@ -60,13 +60,21 @@ const AuthProvider = ({ children }) => {
         const user = { email: currentUser.email };
 
         axios
-          .post("http://localhost:5000/jwt", user, {
-            withCredentials: true,
-          })
+          .post(
+            "https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/jwt",
+            user,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => setLoading(false));
       } else {
         axios
-          .post("http://localhost:5000/logout", {}, { withCredentials: true })
+          .post(
+            "https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/logout",
+            {},
+            { withCredentials: true }
+          )
           .then((res) => {
             setLoading(false);
           });

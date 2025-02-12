@@ -9,7 +9,11 @@ const Features = () => {
   const [stats, setStats] = useState({});
   console.log(stats);
   useEffect(() => {
-    axios.get("http://localhost:5000/stats").then((res) => setStats(res.data));
+    axios
+      .get(
+        "https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/stats"
+      )
+      .then((res) => setStats(res.data));
   }, []);
   return (
     <div className="my-24 bg-background">

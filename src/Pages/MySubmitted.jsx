@@ -10,9 +10,12 @@ const MySubmitted = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/assignments/submitted?email=${user.email}`, {
-        withCredentials: true,
-      })
+      .get(
+        `https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignments/submitted?email=${user.email}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         setJobs(res.data);
       });
@@ -23,7 +26,9 @@ const MySubmitted = () => {
         <SectionTitle header={"My Submitted Assignments"}></SectionTitle>
       </div>
       {jobs?.length <= 0 ? (
-        <h3 className="text-center mt-8 text-accent font-semibold">No Submitted Assignment Found</h3>
+        <h3 className="text-center mt-8 text-accent font-semibold">
+          No Submitted Assignment Found
+        </h3>
       ) : (
         <table className="table table-zebra">
           {/* head */}

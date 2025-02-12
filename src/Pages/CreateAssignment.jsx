@@ -77,9 +77,13 @@ const CreateAssignment = () => {
     };
 
     axios
-      .post("http://localhost:5000/assignments", newAssignment, {
-        withCredentials: true,
-      })
+      .post(
+        "https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignments",
+        newAssignment,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({

@@ -22,10 +22,13 @@ const PendingAssignment = () => {
     const signal = controller.signal;
     setLoading(true);
     axios
-      .get("http://localhost:5000/assignments/pending", {
-        withCredentials: true,
-        signal,
-      })
+      .get(
+        "https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignments/pending",
+        {
+          withCredentials: true,
+          signal,
+        }
+      )
       .then((res) => setPendingAssignments(res.data))
       .catch((error) => {
         if (error.name === "AbortError") {
@@ -70,13 +73,16 @@ const PendingAssignment = () => {
     const feedback = form.get("feedback");
     const marksInfo = { obtainMark, feedback, isPending: false };
 
-    fetch(`http://localhost:5000/assignment/update/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(marksInfo),
-    })
+    fetch(
+      `https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignment/update/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(marksInfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {

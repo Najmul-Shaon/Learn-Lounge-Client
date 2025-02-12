@@ -22,7 +22,9 @@ const Assignments = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:5000/assignments?filter=${type}`)
+      .get(
+        `https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignments?filter=${type}`
+      )
       .then((res) => setAllAssignments(res.data))
       .catch((error) => {})
       .finally(() => setLoading(false));
@@ -30,7 +32,9 @@ const Assignments = () => {
 
   const handleSearch = () => {
     axios
-      .get(`http://localhost:5000/assignments?search=${search}`)
+      .get(
+        `https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignments?search=${search}`
+      )
       .then((res) => setAllAssignments(res.data));
     setSearch("");
   };

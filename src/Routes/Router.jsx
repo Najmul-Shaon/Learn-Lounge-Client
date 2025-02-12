@@ -38,7 +38,10 @@ const Router = createBrowserRouter([
       {
         path: "/assignments",
         element: <Assignments></Assignments>,
-        loader: () => fetch("http://localhost:5000/assignments"),
+        loader: () =>
+          fetch(
+            "https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignments"
+          ),
       },
 
       {
@@ -62,11 +65,14 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          axios.get(`http://localhost:5000/assignment/${params.id}`, {
-            withCredentials: true,
-          }),
+          axios.get(
+            `https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignment/${params.id}`,
+            {
+              withCredentials: true,
+            }
+          ),
         // loader: ({ params }) =>
-        //   fetch(`http://localhost:5000/assignment/${params.id}`),
+        //   fetch(`https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignment/${params.id}`),
       },
       {
         path: "/assignment/details/:id",
@@ -78,13 +84,15 @@ const Router = createBrowserRouter([
 
         // loader: ({ params }) =>
         //   axios.get(
-        //     `http://localhost:5000/assignment/${params.id}`,
+        //     `https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignment/${params.id}`,
         //     {
         //       withCredentials: true,
         //     }
         //   ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/assignment/${params.id}`),
+          fetch(
+            `https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignment/${params.id}`
+          ),
       },
       {
         path: "/assignment/submit/:id",
@@ -94,11 +102,14 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
         // loader: ({ params }) =>
-        //   fetch(`http://localhost:5000/assignment/${params.id}`),
+        //   fetch(`https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignment/${params.id}`),
         loader: ({ params }) =>
-          axios.get(`http://localhost:5000/assignment/${params.id}`, {
-            withCredentials: true,
-          }),
+          axios.get(
+            `https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignment/${params.id}`,
+            {
+              withCredentials: true,
+            }
+          ),
       },
       {
         path: "/myAssignment",
@@ -117,9 +128,12 @@ const Router = createBrowserRouter([
         ),
 
         loader: () =>
-          axios.get("http://localhost:5000/assignments/pending", {
-            withCredentials: true,
-          }),
+          axios.get(
+            "https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignments/pending",
+            {
+              withCredentials: true,
+            }
+          ),
       },
     ],
   },

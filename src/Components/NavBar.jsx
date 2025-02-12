@@ -21,9 +21,13 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/user?email=${user?.email}`).then((res) => {
-      setImg(res.data);
-    });
+    axios
+      .get(
+        `https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/user?email=${user?.email}`
+      )
+      .then((res) => {
+        setImg(res.data);
+      });
   }, [user?.email]);
 
   useEffect(() => {

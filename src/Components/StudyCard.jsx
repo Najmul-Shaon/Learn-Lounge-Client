@@ -7,9 +7,13 @@ import { Link } from "react-router-dom";
 const StudyCard = () => {
   const [allAssignments, setAllAssignments] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:5000/assignments?max=8`).then((res) => {
-      setAllAssignments(res?.data);
-    });
+    axios
+      .get(
+        `https://learn-lounge-server-o9qogk26s-najmul-shaons-projects.vercel.app/assignments?max=8`
+      )
+      .then((res) => {
+        setAllAssignments(res?.data);
+      });
   }, []);
   return (
     <div className="my-24 space-y-6">
