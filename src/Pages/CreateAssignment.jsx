@@ -10,6 +10,7 @@ import SectionTitle from "../Components/SectionTitle/SectionTitle";
 const CreateAssignment = () => {
   const navigation = useNavigate();
   const { user } = useContext(AuthContext);
+  console.log("user from create page", user);
   const [deadline, setDeadline] = useState(null);
   const [type, setType] = useState("Easy");
   const [formatedDeadline, setFormatedDeadline] = useState("");

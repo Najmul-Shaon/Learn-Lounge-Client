@@ -30,74 +30,7 @@ const Assignments = () => {
     setSearch("");
   };
 
-  const handleUpdate = (id) => {
-    axios
-      .get(`http://localhost:5000/assignment/${id}`, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        if (res?.data?.userMail === user?.email) {
-          navigate(`/assignment/update/${id}`);
-        } else {
-          Swal.fire({
-            title: "You Are Not The Assignment Author!!",
-            icon: "warning",
-          });
-        }
-      });
-  };
-
-  // while click on delete button
-  const handleDelete = (id) => {
-    // fetch(`http://localhost:5000/assignment/${id}`)
-    //   .then((res) => res.json())
-    axios
-      .get(`http://localhost:5000/assignment/${id}`, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        if (res?.data?.userMail === user?.email) {
-          Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              // fetch(`http://localhost:5000/assignment/${id}`, {
-              //   method: "delete",
-              // })
-              //   .then((res) => res.json())
-              axios
-                .delete(`http://localhost:5000/assignment/${id}`, {
-                  withCredentials: true,
-                })
-                .then((res) => {
-                  if (res?.data?.deletedCount > 0) {
-                    Swal.fire({
-                      title: "Deleted!",
-                      text: "Your assignment has been deleted.",
-                      icon: "success",
-                    });
-                    const remaining = allAssignments.filter(
-                      (singleAssignment) => singleAssignment._id !== id
-                    );
-                    setAllAssignments(remaining);
-                  }
-                });
-            }
-          });
-        } else {
-          Swal.fire({
-            title: "You Are Not The Assignment Author!!",
-            icon: "warning",
-          });
-        }
-      });
-  };
+ 
 
   return (
     <div className="bg-background">

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
+import SectionTitle from "../Components/SectionTitle/SectionTitle";
 
 const SubmitAssignment = () => {
   const assignment = useLoaderData();
@@ -45,40 +46,44 @@ const SubmitAssignment = () => {
   };
 
   return (
-    <div className="container mx-auto my-24 flex flex-col items-center">
-      <h3 className="font-bold text-3xl">Submit Assignment</h3>
-      <form className="space-y-3" onSubmit={handleAssignmentSubmit}>
-        <div className="w-full">
-          <label className="label">
-            <span className="label-text">Put the link here</span>
-          </label>
-          <input
-            type="url"
-            name="assignmentLink"
-            required
-            placeholder="Put the link here"
-            className="input input-bordered w-full max-w-xs"
-          />
-        </div>
-        <div className="w-full">
-          <label className="label">
-            <span className="label-text">
-              Put the note here ({text.length} / {maxCharacter})
-            </span>
-          </label>
-          <textarea
-            className="textarea textarea-bordered w-full"
-            required
-            placeholder="Put the note here"
-            name="assignmentDescription"
-            maxLength={maxCharacter}
-            onChange={(e) => setText(e.target.value)}
-          ></textarea>
-        </div>
-        <button className="btn bg-orange-400 hover:bg-orange-300 w-full text-white text-lg font-bold">
-          Submit
-        </button>
-      </form>
+    <div className="bg-background mt-16 py-8">
+      <div>
+        <SectionTitle header={"Submit Assignment"}></SectionTitle>
+      </div>
+      <div className="flex flex-col items-center bg-secondary max-w-md py-4 mx-auto rounded-lg">
+        <form className="space-y-3" onSubmit={handleAssignmentSubmit}>
+          <div className="w-full">
+            <label className="label">
+              <span className="label-text">Put the link here</span>
+            </label>
+            <input
+              type="url"
+              name="assignmentLink"
+              required
+              placeholder="Put the link here"
+              className="input input-bordered w-full max-w-xs"
+            />
+          </div>
+          <div className="w-full">
+            <label className="label">
+              <span className="label-text">
+                Put the note here ({text.length} / {maxCharacter})
+              </span>
+            </label>
+            <textarea
+              className="textarea textarea-bordered w-full"
+              required
+              placeholder="Put the note here"
+              name="assignmentDescription"
+              maxLength={maxCharacter}
+              onChange={(e) => setText(e.target.value)}
+            ></textarea>
+          </div>
+          <button className="btn primary-btn w-full shadow-lg shadow-primary/50">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
