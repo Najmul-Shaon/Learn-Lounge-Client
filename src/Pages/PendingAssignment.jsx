@@ -1,15 +1,43 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaRegWindowClose } from "react-icons/fa";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import SectionTitle from "../Components/SectionTitle/SectionTitle";
+import axios from "axios";
+import Loading from "../Components/Loading";
 
 const PendingAssignment = () => {
-  const pendingAssignments = useLoaderData();
+  const { user, setLoading, loading } = useContext(AuthContext);
+  // const pendingAssignments = useLoaderData();
+
+  console.log(loading);
+
+  const [pendingAssignments, setPendingAssignments] = useState([]);
+  console.log(pendingAssignments);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    setLoading(true);
+    axios
+      .get("http://localhost:5000/assignments/pending", {
+        withCredentials: true,
+        signal,
+      })
+      .then((res) => setPendingAssignments(res.data))
+      .catch((error) => {
+        if (error.name === "AbortError") {
+          console.log("error from catch", error);
+          return;
+        }
+      })
+      .finally(() => setLoading(false));
+    return () => controller.abort();
+  }, [user]);
+
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
 
   const maxCharacter = 50;
   const [text, setText] = useState("");
@@ -59,11 +87,12 @@ const PendingAssignment = () => {
   };
   return (
     <div className="mt-20">
+      {loading && pendingAssignments?.length <= 0 && <Loading></Loading>}
       <div className="py-12">
         <SectionTitle header={"Pending Assginments"}></SectionTitle>
       </div>
       <div className="overflow-x-auto container mx-auto pb-24 px-4">
-        {pendingAssignments?.data?.length <= 0 ? (
+        {pendingAssignments?.length <= 0 ? (
           <h3 className="text-3xl text-center">
             There are no pending assignment available.
           </h3>
@@ -91,7 +120,7 @@ const PendingAssignment = () => {
             </thead>
             <tbody>
               {/* rows */}
-              {pendingAssignments?.data?.map((pendingAssignment, i) => (
+              {pendingAssignments?.map((pendingAssignment, i) => (
                 <tr key={pendingAssignment._id}>
                   <th className="text-base border text-center">{i + 1}</th>
                   <td className="text-base border text-center">

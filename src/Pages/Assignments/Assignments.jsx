@@ -6,21 +6,26 @@ import { IoSearchSharp } from "react-icons/io5";
 import axios from "axios";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 import AssignmentCard from "./AssignmentCard";
+import Loading from "../../Components/Loading";
 
 const Assignments = () => {
   // load all assignments data from backend api
   const loadedAllAssignments = useLoaderData();
   const navigate = useNavigate();
   // get user data
-  const { user } = useContext(AuthContext);
+  const { user, setLoading, loading } = useContext(AuthContext);
+  console.log(loading);
   const [type, setType] = useState("All type");
   const [search, setSearch] = useState("");
   const [allAssignments, setAllAssignments] = useState(loadedAllAssignments);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(`http://localhost:5000/assignments?filter=${type}`)
-      .then((res) => setAllAssignments(res.data));
+      .then((res) => setAllAssignments(res.data))
+      .catch((error) => {})
+      .finally(() => setLoading(false));
   }, [type]);
 
   const handleSearch = () => {
@@ -30,10 +35,9 @@ const Assignments = () => {
     setSearch("");
   };
 
- 
-
   return (
     <div className="bg-background">
+      {loading && <Loading></Loading>}
       <div className="container mx-auto px-4">
         <div className="pt-16">
           <SectionTitle header={"All Assignments"}></SectionTitle>
