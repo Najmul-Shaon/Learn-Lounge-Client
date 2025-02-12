@@ -1,46 +1,47 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { FaClock, FaDotCircle } from "react-icons/fa";
 import { TiWorld } from "react-icons/ti";
+import SectionTitle from "./SectionTitle/SectionTitle";
+import CountUp from "react-countup";
 
 const Features = () => {
+  const [stats, setStats] = useState({});
+  console.log(stats);
+  useEffect(() => {
+    axios.get("http://localhost:5000/stats").then((res) => setStats(res.data));
+  }, []);
   return (
-    <div className="my-24">
-      <h3 className="text-3xl font-bold text-center">
-        Our student community is more than one million strong
-      </h3>
-      <h5 className="text-xl text-center font-bold">
-        (and this is just the beginning)
-      </h5>
-      <div className="flex flex-col gap-3 md:flex-row items-center justify-evenly my-6">
-        {/* feature 01  */}
-        <div className="card bg-orange-100 text-black max-w-96">
-          <div className="card-body items-center text-center">
-            <p className="text-2xl">
-              <FaClock></FaClock>
-            </p>
-            <h3 className="card-title font-bold">5 Million+</h3>
-            <p className="text-lg">Completed Sessions</p>
-          </div>
+    <div className="my-24 bg-background">
+      <div className="py-16 container mx-auto px-4">
+        <div className="pb-12">
+          <SectionTitle header={"Community Insights"}></SectionTitle>
         </div>
 
-        {/* feature 02  */}
-        <div className="card bg-orange-100 text-black max-w-96">
-          <div className="card-body items-center text-center">
-            <p className="text-2xl">
-              <FaDotCircle></FaDotCircle>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="p-6 text-center bg-secondary rounded-lg">
+            <p className="text-4xl font-bold mb-2">
+              <CountUp end={stats?.assignmentCount}></CountUp>
             </p>
-            <h2 className="card-title font-bold">400 Million+</h2>
-            <p className="text-lg">Minutes of Focus</p>
+            <h3 className="text-xl uppercase">Assignments</h3>
           </div>
-        </div>
-
-        {/* feature 03  */}
-        <div className="card bg-orange-100 text-black max-w-96">
-          <div className="card-body items-center text-center">
-            <p className="text-2xl">
-              <TiWorld></TiWorld>
+          <div className="p-6 text-center bg-secondary rounded-lg">
+            <p className="text-4xl font-bold mb-2">
+              <CountUp end={stats?.submittedCount}></CountUp>
             </p>
-            <h2 className="card-title font-bold">150+ Countries</h2>
-            <p className="text-lg">Users Location</p>
+            <h3 className="text-xl uppercase">Submitted</h3>
+          </div>
+          <div className="p-6 text-center bg-secondary rounded-lg">
+            <p className="text-4xl font-bold mb-2">
+              <CountUp end={stats?.pendingCount} />
+            </p>
+            <h3 className="text-xl uppercase">Pending</h3>
+          </div>
+          <div className="p-6 text-center bg-secondary rounded-lg">
+            <p className="text-4xl font-bold mb-2">
+              <CountUp end={stats?.usersCount} />
+            </p>
+            <h3 className="text-xl uppercase">Acitve Users</h3>
           </div>
         </div>
       </div>

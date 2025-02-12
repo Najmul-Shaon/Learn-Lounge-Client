@@ -8,7 +8,6 @@ const StudyCard = () => {
   useEffect(() => {
     axios.get(`http://localhost:5000/assignments?max=8`).then((res) => {
       setAllAssignments(res?.data);
-      console.log(res.data);
     });
   }, []);
   return (
@@ -19,12 +18,17 @@ const StudyCard = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {allAssignments.map((assignment) => (
-            <AssignmentCard assignment={assignment}></AssignmentCard>
+            <AssignmentCard
+              assignment={assignment}
+              key={assignment._id}
+            ></AssignmentCard>
           ))}
         </div>
       </div>
       <div className="flex justify-center py-8">
-        <button className="primary-btn btn shadow-lg shadow-primary">Explore All</button>
+        <button className="primary-btn btn shadow-lg shadow-primary">
+          Explore All
+        </button>
       </div>
     </div>
   );

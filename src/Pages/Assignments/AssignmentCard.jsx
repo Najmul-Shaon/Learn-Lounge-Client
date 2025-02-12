@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const AssignmentCard = ({ assignment }) => {
   return (
-    <div className="card bg-secondary shadow-xl" key={assignment._id}>
+    <div className="card bg-secondary shadow-xl">
       <div className="absolute bg-accent top-5 p-1 rounded-s-lg right-0">
         <p className="text-text">{assignment.type}</p>
       </div>
