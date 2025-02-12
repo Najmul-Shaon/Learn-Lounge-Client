@@ -19,8 +19,9 @@ const Banner = () => {
               </motion.span>
             </h1>
             <p className="py-6 text-xl text-text/60">
-              Join the largest global student community online and say goodbye
-              to lack of motivation.
+              Create, submit, and evaluate assignments with ease. Join a global
+              community of learners and enhance your skills. Make learning
+              interactive, engaging, and fun with peer-driven education!
             </p>
             <Link to={"/assignments"}>
               <button className="btn primary-btn shadow-lg shadow-primary font-semibold">

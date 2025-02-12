@@ -62,7 +62,7 @@ const PendingAssignment = () => {
       <div className="py-12">
         <SectionTitle header={"Pending Assginments"}></SectionTitle>
       </div>
-      <div className="overflow-x-auto container mx-auto pb-24">
+      <div className="overflow-x-auto container mx-auto pb-24 px-4">
         {pendingAssignments?.data?.length <= 0 ? (
           <h3 className="text-3xl text-center">
             There are no pending assignment available.
@@ -107,7 +107,7 @@ const PendingAssignment = () => {
                     {/* modal start  */}
                     {/* Open the modal using document.getElementById('ID').showModal() method */}
                     <button
-                      className="btn btn-outline btn-xs hover:bg-orange-300"
+                      className="btn btn-outline btn-xs hover:bg-primary"
                       onClick={() =>
                         handleGiveMark(pendingAssignment?.userMail)
                       }
@@ -186,7 +186,7 @@ const PendingAssignment = () => {
                               </div>
                             </div>
                             <div>
-                              <button className="btn bg-orange-400 hover:bg-orange-300 text-lg font-bold my-2 text-white">
+                              <button className="btn primary-btn shadow-lg shadow-primary/50 font-bold my-2 text-white">
                                 Submit
                               </button>
                             </div>

@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import SectionTitle from "../Components/SectionTitle/SectionTitle";
 
 const CreateAssignment = () => {
   const navigation = useNavigate();
@@ -94,13 +95,13 @@ const CreateAssignment = () => {
   };
 
   return (
-    <div className="hero min-h-screen my-12 container mx-auto">
-      <div className="hero-content flex-col">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold">Create Assignment</h1>
+    <div className="mt-16 py-12 bg-background">
+      <div className="container mx-auto px-4">
+        <div className="mb-8">
+          <SectionTitle header={"Create Assignment"}></SectionTitle>
         </div>
-        <div className="card shrink-0 shadow-2xl w-full">
-          <form onSubmit={handleForm} className="card-body">
+        <div className="bg-secondary rounded-lg max-w-xl mx-auto">
+          <form onSubmit={handleForm} className="px-8 py-4">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Title</span>
@@ -116,21 +117,20 @@ const CreateAssignment = () => {
                 <label className="text-xs text-red-400">{error?.title}</label>
               )}
             </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Thumbnail Image</span>
-              </label>
-              <input
-                type="url"
-                name="phoroUrl"
-                placeholder="Enter your thumbnail image url here"
-                className="input input-bordered"
-                required
-              />
-            </div>
-
-            <div className="flex gap-4">
-              <div className="form-control">
+            <div className="grid grid-cols-5 gap-6">
+              <div className="form-control col-span-3">
+                <label className="label">
+                  <span className="label-text">Thumbnail Image</span>
+                </label>
+                <input
+                  type="url"
+                  name="phoroUrl"
+                  placeholder="Enter your thumbnail image url here"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="form-control col-span-2">
                 <label className="label">
                   <span className="label-text">Total Marks</span>
                 </label>
@@ -145,9 +145,12 @@ const CreateAssignment = () => {
                   <label className="text-xs text-red-400">{error?.marks}</label>
                 )}
               </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Difficulty Level</span>
+                  <span className="label-text">Difficulty</span>
                 </label>
                 <select
                   value={type}
@@ -162,24 +165,24 @@ const CreateAssignment = () => {
                   <option value="Hard">Hard</option>
                 </select>
               </div>
-            </div>
-            <div>
-              <label className="label">
-                <span className="label-text">Due to</span>
-              </label>
-              <div className="w-full">
-                <DatePicker
-                  className="input input-bordered"
-                  required
-                  selected={deadline}
-                  onChange={(date) => formatDate(date)}
-                  placeholderText="Select deadline"
-                ></DatePicker>
-                {error?.message && (
-                  <label className="text-xs text-red-400">
-                    {error?.message}
-                  </label>
-                )}
+              <div>
+                <label className="label">
+                  <span className="label-text">Due to</span>
+                </label>
+                <div className="w-full">
+                  <DatePicker
+                    className="input input-bordered"
+                    required
+                    selected={deadline}
+                    onChange={(date) => formatDate(date)}
+                    placeholderText="Select deadline"
+                  ></DatePicker>
+                  {error?.message && (
+                    <label className="text-xs text-red-400">
+                      {error?.message}
+                    </label>
+                  )}
+                </div>
               </div>
             </div>
             <div>
@@ -199,7 +202,7 @@ const CreateAssignment = () => {
               </div>
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-orange-400 text-white font-bold text-lg">
+              <button className="btn primary-btn shadow-lg shadow-primary/50 font-bold text-lg">
                 Create
               </button>
             </div>

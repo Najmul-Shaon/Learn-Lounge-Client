@@ -108,7 +108,8 @@ const NavBar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                // className="menu menu-sm dropdown-content bg-secondary rounded-box z-[1] mt-3 w-52 p-2 shadow-lg border border-text/50"
+                className="dropdown-content bg-secondary rounded-box z-[1] mt-3 w-52 p-2 shadow-lg border border-text/50"
               >
                 {links}
               </ul>
@@ -136,30 +137,38 @@ const NavBar = () => {
                   <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="m-1">
                       <div className="avatar">
-                        <div className="w-6 rounded-full">
+                        <div className="w-8 rounded-full">
                           <img src={user?.photoURL || userImg[0]?.photo} />
                         </div>
                       </div>
                     </div>
                     <div
                       tabIndex={0}
-                      className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow-lg space-y-2"
+                      className="dropdown-content menu rounded-box z-[1] w-44 max-w-52 p-2 shadow-lg space-y-2 bg-secondary border border-text/50"
                     >
                       <p>
-                        <Link
+                        <NavLink
                           to={"/createAssignment"}
-                          className="font-semibold text-base"
+                          className={({ isActive }) =>
+                            `font-semibold text-base hover:text-primary ${
+                              isActive ? "text-primary" : "text-black"
+                            } focus:outline-none`
+                          }
                         >
                           Create Assignment
-                        </Link>
+                        </NavLink>
                       </p>
                       <p>
-                        <Link
+                        <NavLink
                           to="/myAssignment"
-                          className="font-semibold text-base"
+                          className={({ isActive }) =>
+                            `font-semibold text-base hover:text-primary ${
+                              isActive ? "text-primary" : "text-black"
+                            } focus:outline-none`
+                          }
                         >
                           My Assignment
-                        </Link>
+                        </NavLink>
                       </p>
                     </div>
                   </div>
@@ -178,14 +187,20 @@ const NavBar = () => {
                 ></ImExit>
               </div>
             ) : (
-              <Link to="/login" className="btn btn-sm bg-primary text-white hover:bg-primary">
+              <Link
+                to="/login"
+                className="btn btn-sm bg-primary text-white hover:bg-primary"
+              >
                 Login
               </Link>
             )}
             {user && user.email ? (
               ""
             ) : (
-              <Link to="/signup" className="btn btn-sm btn-outline border-primary hover:bg-primary">
+              <Link
+                to="/signup"
+                className="btn btn-sm btn-outline border-primary hover:bg-primary"
+              >
                 Register
               </Link>
             )}
