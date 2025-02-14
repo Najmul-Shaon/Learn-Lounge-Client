@@ -28,7 +28,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <div className="bg-gray-100 py-16 px-6">
+    <div className="bg-background py-12 px-4 mt-24">
       <div className="max-w-5xl mx-auto text-center">
         <div>
           <SectionTitle
@@ -39,11 +39,11 @@ const HowItWorks = () => {
           ></SectionTitle>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
           {steps.map((step, index) => (
             <div
               key={index}
-              className="bg-secondary shadow-lg rounded-lg p-6 flex flex-col items-center transition hover:shadow-xl"
+              className="bg-secondary shadow-lg rounded-lg px-4 py-6 flex flex-col items-center transition hover:shadow-xl"
             >
               <div className="text-5xl">{step.icon}</div>
               <h3 className="mt-4 text-xl font-semibold text-primary">

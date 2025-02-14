@@ -46,8 +46,8 @@ const SubmitAssignment = () => {
   };
 
   return (
-    <div className="bg-background mt-16 py-8">
-      <div>
+    <div className="bg-background mt-16 pb-24">
+      <div className="pt-12 mb-8">
         <SectionTitle header={"Submit Assignment"}></SectionTitle>
       </div>
       <div className="flex flex-col items-center bg-secondary max-w-md py-4 mx-auto rounded-lg">

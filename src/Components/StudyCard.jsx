@@ -14,7 +14,7 @@ const StudyCard = () => {
       });
   }, []);
   return (
-    <div className="my-24 space-y-6">
+    <div className="mt-24 space-y-6">
       <div className="container mx-auto px-4">
         <div className="pt-12">
           <SectionTitle
@@ -24,7 +24,7 @@ const StudyCard = () => {
             }
           ></SectionTitle>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
           {allAssignments.map((assignment) => (
             <AssignmentCard
               assignment={assignment}
@@ -33,7 +33,7 @@ const StudyCard = () => {
           ))}
         </div>
       </div>
-      <div className="flex justify-center py-8">
+      <div className="flex justify-center">
         <Link to="/assignments">
           <button className="primary-btn btn shadow-lg shadow-primary">
             Explore All

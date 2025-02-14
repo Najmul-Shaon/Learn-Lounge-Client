@@ -99,13 +99,13 @@ const CreateAssignment = () => {
   };
 
   return (
-    <div className="mt-16 py-12 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="mb-8">
+    <div className="mt-16 bg-background">
+      <div className="container mx-auto px-4 pb-24">
+        <div className="pt-12 mb-8">
           <SectionTitle header={"Create Assignment"}></SectionTitle>
         </div>
         <div className="bg-secondary rounded-lg max-w-xl mx-auto">
-          <form onSubmit={handleForm} className="px-8 py-4">
+          <form onSubmit={handleForm} className="px-8 py-6">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Title</span>

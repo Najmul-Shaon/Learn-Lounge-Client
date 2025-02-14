@@ -6,9 +6,9 @@ const AssignmentCard = ({ assignment }) => {
       <div className="absolute bg-accent top-5 p-1 rounded-s-lg right-0">
         <p className="text-text">{assignment.type}</p>
       </div>
-      <figure className="">
+      <figure className="h-48">
         <img
-          className="rounded-t-lg"
+          className="rounded-t-lg w-full h-full object-cover"
           src={assignment.phoroUrl}
           alt="Assignment Image"
         />

@@ -13,18 +13,16 @@ const Features = () => {
       .then((res) => setStats(res.data));
   }, []);
   return (
-    <div className="my-24 bg-background">
-      <div className="py-16 container mx-auto px-4">
-        <div className="pb-12">
-          <SectionTitle
-            header={" 🤝 Community Insights"}
-            subHeader={
-              "Gain valuable insights from the global student community. Learn, share, and grow together."
-            }
-          ></SectionTitle>
-        </div>
+    <div className="mt-24 py-12 bg-background">
+      <div className="container mx-auto px-4">
+        <SectionTitle
+          header={" 🤝 Community Insights"}
+          subHeader={
+            "Gain valuable insights from the global student community. Learn, share, and grow together."
+          }
+        ></SectionTitle>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
           <div className="p-6 text-center bg-secondary rounded-lg shadow-lg transition hover:shadow-xl hover:shadow-primary/30">
             <p className="text-4xl font-bold mb-2 text-accent">
               <CountUp end={stats?.assignmentCount}></CountUp>

@@ -16,8 +16,7 @@ const About = () => {
       {/* ***********************************************  */}
       <div className="container mx-auto px-4">
         {/* Mission & Vision */}
-        {/* <div className="max-w-4xl mx-auto py-16 px-6 space-y-12"> */}
-        <div className="flex flex-col md:flex-row gap-6 py-16">
+        <div className="flex flex-col md:flex-row gap-6 mt-12">
           <div className="bg-secondary/20 shadow-lg rounded-lg p-6 border-l-4 border-primary">
             <h2 className="text-2xl font-semibold text-primary">🎯 Mission</h2>
             <p className="mt-2 text-gray-600">
@@ -50,7 +49,7 @@ const About = () => {
         </div>
 
         {/* Key Features */}
-        <div className="py-16">
+        <div className="mt-24">
           <div className="text-center">
             <h2 className="text-3xl font-bold text-primary">✨ Key Features</h2>
             <div className="grid md:grid-cols-3 gap-8 mt-8">
@@ -83,7 +82,7 @@ const About = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center py-16">
+        <div className="text-center py-24">
           <h2 className="text-3xl font-bold text-primary">
             Join Learn Lounge Today!
           </h2>

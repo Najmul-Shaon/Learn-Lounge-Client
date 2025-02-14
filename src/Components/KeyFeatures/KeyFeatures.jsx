@@ -3,16 +3,15 @@ import SectionTitle from "../SectionTitle/SectionTitle";
 
 const KeyFeatures = () => {
   return (
-    <div className="py-16 container mx-auto px-4">
+    <div className="container mx-auto px-4 mt-24">
       <div className="text-center">
-        <div>
-          <SectionTitle
-            header={"✨ Key Features"}
-            subHeader={
-              "Learn Lounge streamlines assignment creation, peer feedback, and progress tracking, all in an easy-to-use platform."
-            }
-          ></SectionTitle>
-        </div>
+        <SectionTitle
+          header={"✨ Key Features"}
+          subHeader={
+            "Learn Lounge streamlines assignment creation, peer feedback, and progress tracking, all in an easy-to-use platform."
+          }
+        ></SectionTitle>
+
         <div className="grid md:grid-cols-3 gap-8 mt-8">
           <FeatureCard
             title="📚 Group Learning"

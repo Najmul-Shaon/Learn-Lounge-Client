@@ -83,52 +83,13 @@ const AssignmentDetails = () => {
       });
   };
   return (
-    <div>
-      <div className="mt-20">
+    <div className="mt-16 bg-background">
+      <div className="py-12">
         <SectionTitle header={`Details of ${assignment?.title}`}></SectionTitle>
       </div>
-      {/* <div className="container mx-auto px-4 grid grid-cols-2 mt-8">
-        <figure className="w-full">
-          <img className="w-full" src={assignment?.phoroUrl} alt="Album" />
-        </figure>
-        <div className="card-body w-full">
-          <h2 className="card-title text-2xl">{assignment?.title}</h2>
-          <p className="text-lg">{assignment?.description}</p>
-          <div className="flex items-center justify-between gap-6 my-6">
-            <div>
-              <h5 className="text-lg ">Effort Scale</h5>
-              <p className="text-lg font-bold ">{assignment?.type}</p>
-            </div>
-            <div>
-              <h5 className="text-lg ">Total Marks</h5>
-              <p className="text-lg font-bold ">{assignment?.marks}</p>
-            </div>
-            <div>
-              <h5 className="text-lg ">Deadline</h5>
-              <p className="text-lg font-bold ">
-                {assignment?.deadline || assignment?.formatedDeadline}
-              </p>
-            </div>
-            <div>
-              <h5 className="text-lg ">Deadline</h5>
-              <p className="text-lg font-bold ">
-                {assignment?.deadline || assignment?.formatedDeadline}
-              </p>
-            </div>
-          </div>
-          {/* button action: update delete view  */}
-      {/* <div className="card-actions justify-end">
-            <Link to={`/assignment/submit/${assignment?._id}`}>
-              <button className="btn bg-orange-400 hover:bg-orange-300 text-lg font-bold text-white">
-                Take Assignment
-              </button>
-            </Link>
-          </div>
-        </div>
-      </div>  */}
 
       {/* ***********************************************  */}
-      <div className="mx-auto shadow-lg rounded-xl p-6 flex flex-col md:flex-row items-center gap-6">
+      <div className="mx-auto shadow-lg rounded-xl px-6 flex flex-col md:flex-row items-center gap-6 pb-24">
         {/* Left Side - Image */}
         <div className="w-full md:w-1/3">
           <img

@@ -49,16 +49,15 @@ export default function FAQv2() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-background rounded-lg shadow-lg shadow-primary/50 mb-16">
-      <div>
-        <SectionTitle
-          header={"💬 Frequently Asked Questions"}
-          subHeader={
-            "Get quick answers to your queries and make the most of your Learn Lounge experience."
-          }
-        ></SectionTitle>
-      </div>
-      <div className="space-y-4">
+    <div className="max-w-2xl mx-auto p-6 bg-background rounded-lg shadow-lg shadow-primary/50 mt-24">
+      <SectionTitle
+        header={"💬 Frequently Asked Questions"}
+        subHeader={
+          "Get quick answers to your queries and make the most of your Learn Lounge experience."
+        }
+      ></SectionTitle>
+
+      <div className="space-y-4 mt-12">
         {faqs.map((faq, index) => (
           <div
             key={index}

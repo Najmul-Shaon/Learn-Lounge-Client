@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+
 import { AuthContext } from "../../Provider/AuthProvider";
 import { IoSearchSharp } from "react-icons/io5";
 import axios from "axios";
@@ -38,10 +38,10 @@ const Assignments = () => {
   };
 
   return (
-    <div className="bg-background">
+    <div className="bg-background mt-16">
       {loading && <Loading></Loading>}
       <div className="container mx-auto px-4">
-        <div className="pt-16">
+        <div className="pt-12 pb-8">
           <SectionTitle header={"All Assignments"}></SectionTitle>
         </div>
         {/* dropdown filter and search  */}
@@ -75,7 +75,7 @@ const Assignments = () => {
             </select>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pb-24">
           {allAssignments.length <= 0 ? (
             <h2 className="text-center text-3xl font-bold">
               There are no assignment available!!

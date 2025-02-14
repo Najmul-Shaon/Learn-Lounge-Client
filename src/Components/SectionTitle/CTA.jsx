@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const CTA = () => {
     return (
-        <div className="text-center py-16">
+        <div className="text-center my-24">
           <h2 className="text-3xl font-bold text-primary">
             Join Learn Lounge Today!
           </h2>

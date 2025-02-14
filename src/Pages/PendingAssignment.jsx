@@ -1,25 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaRegWindowClose } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import SectionTitle from "../Components/SectionTitle/SectionTitle";
-import axios from "axios";
-import Loading from "../Components/Loading";
+
 
 const PendingAssignment = () => {
+  const pAssignments = useLoaderData();
+  const pendingAssignments = pAssignments.data;
   const { user, setLoading, loading } = useContext(AuthContext);
-
-  const [pendingAssignments, setPendingAssignments] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://learn-lounge-server.vercel.app/assignments/pending", {
-        withCredentials: true,
-      })
-      .then((res) => setPendingAssignments(res.data));
-  }, []);
 
   const navigate = useNavigate();
 
@@ -70,11 +61,11 @@ const PendingAssignment = () => {
       });
   };
   return (
-    <div className="mt-20">
-      <div className="py-12">
+    <div className="mt-16">
+      <div className="pt-12 mb-8">
         <SectionTitle header={"Pending Assginments"}></SectionTitle>
       </div>
-      <div className="overflow-x-auto container mx-auto pb-24 px-4">
+      <div className="overflow-x-auto container mx-auto mb-24 px-4">
         {pendingAssignments?.length <= 0 ? (
           <h3 className="text-3xl text-center">
             There are no pending assignment available.

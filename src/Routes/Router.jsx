@@ -125,13 +125,13 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
 
-        // loader: () =>
-        //   axios.get(
-        //     "https://learn-lounge-server.vercel.app/assignments/pending",
-        //     {
-        //       withCredentials: true,
-        //     }
-        //   ),
+        loader: () =>
+          axios.get(
+            "https://learn-lounge-server.vercel.app/assignments/pending",
+            {
+              withCredentials: true,
+            }
+          ),
       },
     ],
   },

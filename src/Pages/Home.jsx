@@ -1,4 +1,4 @@
-import FAQ from "../Components/FAQ";
+
 import Features from "../Components/Features";
 import Banner from "../Components/Banner";
 import StudyCard from "../Components/StudyCard";
