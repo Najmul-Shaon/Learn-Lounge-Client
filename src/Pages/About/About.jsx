@@ -13,7 +13,6 @@ const About = () => {
           }
         ></SectionTitle>
       </div>
-      {/* ***********************************************  */}
       <div className="container mx-auto px-4">
         {/* Mission & Vision */}
         <div className="flex flex-col md:flex-row gap-6 mt-12">
@@ -97,7 +96,6 @@ const About = () => {
           </Link>
         </div>
       </div>
-      {/* ***********************************************  */}
     </div>
   );
 };
